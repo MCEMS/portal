@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '4.0'
+before_install:
+- chmod 755 ./build.sh
+script: "./build.sh"
+branches:
+  only:
+  - master
+env:
+  global:
+    secure: eAoxZ4B1z2rnfoV0OnaIOzLNdYN8gZ2L0ew+pBnLGlXxFDkN33CruXfa0MZJfUw8QcfGAA0v76cFMmplDExQLjF4R8dAr+u+sCtyIQzwqlQCHrqm40lBJY8p8GpRdayZ7Q8sdeJT3PIMwon6DJIXesvOZY7ioSzTZ28HJyTvPwHgSv2h4Ltss+nySl9MLH1jd1iQLelno7ztBtSc3MpcbujTy9cDp2WMZzhk7OiVg7YB1ZhRSAx5SqJr0shafgYSb2Ei4wAA3YqlrDIKZ5bdwYJiXbjbMnDqGjcbBl0CrFfXK4za4Cfaiq5Dkx5Vjy4OxULzBoZbDE6ep9xYT5mmq3Jekh4CmOaD9qFYC5LFuyizdDWekY04wJ/FB7MJkzyA8B0QfCYRMB7vZy/zlPXFoURMOFCbMFvGgjln5WDAYY59Xapbrsh7m/gNW8hY9JIMR4M1UgSM7aO4USEJ9iYe9hoOK3VVXzAiML+1oIS9ibPpVzkae4Eh1RVAIoJtFtZcCpLgID6N/mfo8IXTc2b9v0X+LC9Dy2DchUCjv8nddR0JMQ9hA5WqZN1qlOJkmRH8+r23X+X3bhWwZN5AKWNujJsmTyh3VuotNgivSUI82Yqq6/gheoRgmhYkX3GAtPcrmdsfjfhZjhXf5KXB8bhT6akRVnU4ajnnddRxTpM+0GE=
