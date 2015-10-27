@@ -41,7 +41,7 @@ var App = React.createClass({
             onClick={this.nav('profile')} />
           <NavTab
             active={this.state.page == 'calendar'}
-            icon='calendar'
+            icon='calendar outline'
             text='Calendar'
             onClick={this.nav('calendar')} />
           <NavTab

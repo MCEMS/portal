@@ -5,20 +5,15 @@ var ProfilePage = React.createClass({
 
         <div className='twelve wide column'>
           <ApprovalQueue />
+          <h1 className='ui horizontal divider header'>About Me</h1>
         </div>
 
         <div className='four wide column'>
+          <div className='ui horizontal divider'>Upcoming Shifts</div>
           <UpcomingShifts />
-          <div className='ui divider' />
+          <div className='ui horizontal divider'>Expiring Certs</div>
           <ExpiringCerts />
-        </div>
-
-        <h1 className='ui horizontal divider header'>About Me</h1>
-
-        <div className='twelve wide column'>
-
-        </div>
-        <div className='four wide column'>
+          <div className='ui horizontal divider'>History</div>
           <MemberHistory />
         </div>
       </div>

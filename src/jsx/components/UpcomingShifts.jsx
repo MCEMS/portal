@@ -15,20 +15,17 @@ var UpcomingShift = React.createClass({
 var UpcomingShifts = React.createClass({
   render: function() {
     return (
-      <div>
-        <h2>Upcoming Shifts</h2>
-        <div className='ui relaxed list'>
-          <UpcomingShift
-            start_date='October 30'
-            start_time='17:00'
-            end_date='October 31'
-            end_time='08:00' />
-          <UpcomingShift
-            start_date='November 30'
-            start_time='17:00'
-            end_date='December 1'
-            end_time='08:00' />
-        </div>
+      <div className='ui relaxed list'>
+        <UpcomingShift
+          start_date='October 30'
+          start_time='17:00'
+          end_date='October 31'
+          end_time='08:00' />
+        <UpcomingShift
+          start_date='November 30'
+          start_time='17:00'
+          end_date='December 1'
+          end_time='08:00' />
       </div>
     );
   }

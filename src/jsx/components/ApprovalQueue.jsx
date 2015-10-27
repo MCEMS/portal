@@ -79,24 +79,21 @@ var ServiceCreditQueueItem = React.createClass({
 var ApprovalQueue = React.createClass({
   render: function() {
     return (
-      <div>
-        <h2>Approval Queue</h2>
-        <div className='ui large feed'>
-          <RoleRequestQueueItem
-            name='Eli Russ'
-            role='Crew Chief'
-            time='2 days ago' />
-          <CertificationQueueItem
-            name='Mark Tamarin'
-            certification='Pennsylvania EMT'
-            number='123456'
-            expires='December 31, 2016'
-            time='3 days ago' />
-          <ServiceCreditQueueItem
-            name='Ashley Landesman'
-            description='I was at the presidential inauguration for the whole time'
-            time='a week ago' />
-        </div>
+      <div className='ui large feed'>
+        <RoleRequestQueueItem
+          name='Eli Russ'
+          role='Crew Chief'
+          time='2 days ago' />
+        <CertificationQueueItem
+          name='Mark Tamarin'
+          certification='Pennsylvania EMT'
+          number='123456'
+          expires='December 31, 2016'
+          time='3 days ago' />
+        <ServiceCreditQueueItem
+          name='Ashley Landesman'
+          description='I was at the presidential inauguration for the whole time'
+          time='a week ago' />
       </div>
     );
   }

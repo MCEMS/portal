@@ -15,13 +15,10 @@ var ExpiringCert = React.createClass({
 var ExpiringCerts = React.createClass({
   render: function() {
     return (
-      <div>
-        <h2>Expiring Certs</h2>
-        <div className='ui relaxed list'>
-          <ExpiringCert
-            name='Pennsylvania EMT'
-            date='in a month' />
-        </div>
+      <div className='ui relaxed list'>
+        <ExpiringCert
+          name='Pennsylvania EMT'
+          date='in a month' />
       </div>
     );
   }
