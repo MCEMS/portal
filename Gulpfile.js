@@ -4,19 +4,30 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var minifyHtml = require('gulp-minify-html');
 var minifyCss = require('gulp-minify-css');
+var sass = require('gulp-sass');
 
 gulp.task('static', function() {
-  return gulp.src(['./static/**/*', './static/**/.*'])
-    .pipe(gulp.dest('./dist'));
+  return gulp.src([
+    './static/**/*',
+    './static/**/.*'
+  ]).pipe(gulp.dest('./dist'));
 });
 
 gulp.task('compileJsx', function() {
   return gulp.src([
+    'src/jsx/utilities/*.jsx',
     'src/jsx/components/*.jsx',
     'src/jsx/pages/*.jsx',
     'src/jsx/*.jsx'
   ]).pipe(babel())
     .pipe(concat('jsx.js'))
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('compileScss', function() {
+  return gulp.src('src/scss/*.scss')
+    .pipe(sass())
+    .pipe(concat('app.css'))
     .pipe(gulp.dest('build'));
 });
 
@@ -40,7 +51,7 @@ gulp.task('bower', function() {
   return gulp.src([
     './bower_components/react/react.js',
     './bower_components/react/react-dom.js',
-    './bower_components/primer-css/css/primer.css'
+    './bower_components/bootstrap/dist/css/bootstrap.min.css'
   ]).pipe(gulp.dest('build'));
 });
 
@@ -53,13 +64,30 @@ gulp.task('minifyHtml', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('minifyCss', [ 'bower' ], function() {
-  return gulp.src('build/primer.css')
-    .pipe(concat('app.css'))
+gulp.task('minifyCss', [ 'bower', 'compileScss' ], function() {
+  return gulp.src([
+    'build/bootstrap.min.css',
+    'build/app.css'
+  ]).pipe(concat('app.css'))
     .pipe(minifyCss())
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', [ 'static', 'minifyJs', 'minifyHtml', 'minifyCss' ]);
+gulp.task('fonts', [ 'bower' ], function() {
+  return gulp.src('bower_components/bootstrap/dist/fonts/*.*')
+    .pipe(gulp.dest('dist/fonts'));
+});
 
-gulp.task('buildDev', [ 'static', 'concatJs', 'minifyHtml', 'minifyCss' ]);
+gulp.task('build', [ 'buildDev', 'minifyJs' ]);
+
+gulp.task('buildDev', [
+  'static',
+  'concatJs',
+  'minifyHtml',
+  'minifyCss',
+  'fonts'
+]);
+
+gulp.task('watch', function() {
+  gulp.watch('src/**/*', [ 'buildDev' ]);
+});
