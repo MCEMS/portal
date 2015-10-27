@@ -1,11 +1,14 @@
 var ProfilePage = React.createClass({
   render: function() {
+    var member = {};
+
     return (
       <div className='ui stackable grid'>
 
         <div className='twelve wide column'>
           <ApprovalQueue />
-          <h1 className='ui horizontal divider header'>About Me</h1>
+          <h1 className='ui horizontal divider header'>My Profile</h1>
+          <MemberInfoEdit member={member} />
         </div>
 
         <div className='four wide column'>
