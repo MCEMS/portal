@@ -69,17 +69,22 @@ var App = React.createClass({
               active={this.state.page == 'settings'}
               icon='settings'
               text='Settings'
-              right={true}
               onClick={this.nav('settings')} />
             <NavTab
               icon='sign out'
-              text='Log Out'
-              right={true} />
+              text='Log Out' />
           </div>
         </nav>
         <div className='ui container'>
           {this.getCurrentComponent()}
         </div>
+        <div className='ui hidden divider' />
+        <div className='ui container'>
+          <div className='ui message'>
+            <p className='center aligned'>Copyright &copy; Muhlenberg College EMS. All rights reserved.</p>
+          </div>
+        </div>
+        <div className='ui hidden divider' />
       </div>
     );
   }
