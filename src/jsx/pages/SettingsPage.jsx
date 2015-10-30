@@ -37,9 +37,16 @@ var SettingsPage = React.createClass({
     ];
   },
 
+  getCerts: function() {
+    return [
+
+    ];
+  },
+
   render: function() {
     return (
       <div>
+        <SettingsCerts certs={this.getCerts()} />
         <SettingsRoles roles={this.getRoles()} />
       </div>
     );

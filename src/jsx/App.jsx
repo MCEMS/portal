@@ -1,7 +1,7 @@
 var App = React.createClass({
   getInitialState: function() {
     return {
-      page: 'profile'
+      page: 'settings'
     };
   },
 

@@ -21,7 +21,7 @@ var SettingsRoleRow = React.createClass({
           </div>
         </td>
         <td className='right aligned'>
-          <button className='ui basic button'><Icon icon='pencil' /> Edit</button>
+          <button className='ui fluid basic button'><Icon icon='pencil' /> Edit</button>
         </td>
       </tr>
     );
@@ -47,31 +47,40 @@ var SettingsRoles = React.createClass({
       });
 
     return (
-      <div className='ui segment'>
-        <div className='ui right floated header'>
-          <button className='ui green button'>
-            <Icon icon='add plus' /> Add
-          </button>
-        </div>
-        <h1 className='ui left floated header'>
-          <Icon icon='tag' />
-          <div className='content'>
-            Roles
-          </div>
-        </h1>
-        <table className='ui fixed table'>
-          <thead>
-            <tr>
-              <th className='ten wide'></th>
-              <th className='three wide center aligned'>Show on schedule</th>
-              <th className='three wide'></th>
-            </tr>
-          </thead>
-          <tbody>
-            {roles}
-          </tbody>
-        </table>
-      </div>
+      <table className='ui compact table'>
+        <thead>
+          <tr>
+            <th className='twelve wide'>
+              <h1 className='header'>
+                <Icon icon='tag' /> Roles
+              </h1>
+            </th>
+            <th className='two wide center aligned'>Show on schedule</th>
+            <th className='two wide'></th>
+          </tr>
+        </thead>
+        <tbody>
+          {roles}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>
+              <div className='ui fluid input'>
+                <input type='text' placeholder='Role name' />
+              </div>
+            </th>
+            <th className='center aligned'>
+              <div className='ui toggle checkbox'>
+                <input type='checkbox' checked={this.props.showOnSchedule} />
+                <label></label>
+              </div>
+            </th>
+            <th className='right aligned'>
+              <button className='ui fluid green button'><Icon icon='add' /> Save</button>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
     );
   }
 });
