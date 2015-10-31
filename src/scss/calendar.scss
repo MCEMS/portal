@@ -1,13 +1,19 @@
 .CalendarPage {
-  table.calendar {
-    width: 100%;
-    table-layout: fixed;
-
-    td {
-      border: 1px solid #ccc;
-      height: 100px;
-      vertical-align: top;
+  .mini-calendar {
+    .one-crew {
+      background-color: #dfd;
     }
 
+    .two-crew {
+      background-color: #bfb;
+    }
+
+    .three-crew {
+      background-color: #9f9;
+    }
+
+    .four-crew {
+      background-color: #6f6;
+    }
   }
 }

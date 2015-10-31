@@ -50,13 +50,13 @@ var SettingsRoles = React.createClass({
       <table className='ui compact table'>
         <thead>
           <tr>
-            <th className='twelve wide'>
+            <th className='ten wide'>
               <h1 className='header'>
                 <Icon icon='tag' /> Roles
               </h1>
             </th>
             <th className='two wide center aligned'>Show on schedule</th>
-            <th className='two wide'></th>
+            <th className='twelve wide'></th>
           </tr>
         </thead>
         <tbody>

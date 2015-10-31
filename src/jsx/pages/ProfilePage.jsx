@@ -27,25 +27,34 @@ var ProfilePage = React.createClass({
         <div className='four wide column'>
           <div className='ui horizontal divider'>Upcoming Shifts</div>
           <UpcomingShifts />
+          <div className='ui hidden divider'></div>
           <div className='ui horizontal divider'>Expiring Certs</div>
           <ExpiringCerts />
-          <div className='ui horizontal divider'>History</div>
+          <div className='ui hidden divider'></div>
+          <div className='ui horizontal divider'>My Roles</div>
           <MemberHistory />
+          <div className='ui hidden divider'></div>
           <div className='ui horizontal divider'>Duty Hours</div>
-          <div className='ui tiny three statistics'>
-            <div className='green statistic'>
-              <div className='value'>26</div>
-              <div className='label'>Month</div>
+          <p>
+            <div className='ui tiny three statistics'>
+              <div className='green statistic'>
+                <div className='value'>26</div>
+                <div className='label'>Month</div>
+              </div>
+              <div className='green statistic'>
+                <div className='value'>127</div>
+                <div className='label'>Semester</div>
+              </div>
+              <div className='green statistic'>
+                <div className='value'>1,933</div>
+                <div className='label'>All Time</div>
+              </div>
             </div>
-            <div className='green statistic'>
-              <div className='value'>127</div>
-              <div className='label'>Semester</div>
-            </div>
-            <div className='green statistic'>
-              <div className='value'>1,933</div>
-              <div className='label'>All Time</div>
-            </div>
-          </div>
+          </p>
+          <div className='ui hidden divider'></div>
+          <div className='ui horizontal divider'>Actions</div>
+          <p><div className='ui small fluid button'><Icon icon='emergency' /> Request driver training</div></p>
+          <p><div className='ui small fluid button'><Icon icon='doctor' /> Request crew chief training</div></p>
         </div>
       </div>
     );

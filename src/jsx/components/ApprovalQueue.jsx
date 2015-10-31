@@ -25,8 +25,8 @@ var QueueItem = React.createClass({
             {this.props.body}
           </div>
           <div className='meta'>
-            <div className='ui mini red button'><Icon icon='remove circle' /> Reject</div>
-            <div className='ui mini green button'><Icon icon='check circle' /> Approve</div>
+            <div className='ui tiny compact green button'><Icon icon='check' /> Approve</div>
+            <div className='ui tiny compact basic red button'><Icon icon='remove' /> Reject</div>
           </div>
         </div>
       </div>
@@ -79,10 +79,10 @@ var ServiceCreditQueueItem = React.createClass({
 var ApprovalQueue = React.createClass({
   render: function() {
     return (
-      <div className='ui large feed'>
+      <div className='ui feed'>
         <RoleRequestQueueItem
           name='Eli Russ'
-          role='Crew Chief'
+          role='Crew Chief Trainee'
           time='2 days ago' />
         <CertificationQueueItem
           name='Mark Tamarin'
