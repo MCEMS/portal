@@ -4,25 +4,21 @@ var SettingsPage = React.createClass({
       { role: 'Life Member' },
       {
         role: 'Crew Chief',
-        color: 'blue',
+        color: 'teal',
         showOnSchedule: true
       },
       { role: 'Crew Chief Trainee' },
       {
         role: 'Driver',
-        color: 'red',
+        color: 'violet',
         showOnSchedule: true
       },
       { role: 'Driver Trainee' },
-      {
-        role: 'General Member',
-        color: 'green',
-        showOnSchedule: true
-      },
+      { role: 'General Member' },
       { role: 'Probationary Member' },
       {
         role: 'Training Corps',
-        color: 'violet',
+        color: 'orange',
         showOnSchedule: true
       },
       { role: 'Captain' },

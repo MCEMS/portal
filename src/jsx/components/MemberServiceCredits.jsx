@@ -24,17 +24,13 @@ var MemberServiceCredits = React.createClass({
         <MemberServiceCredit approver='Ashley Landesman' date='October 1st' description='Tabled for MCEMS at the Fall 2015 Activities Fair from 1530 to 1800. Helped crew set up table and recruit interested new members.'/>
         <div className='ui card'>
           <div className='content'>
-            <div className='description'>
-              <p>
-                <div className='ui fluid input'>
-                  <input type='text' placeholder='Date' />
-                </div>
-              </p>
-              <p>
-                <div className='ui form'>
-                  <textarea rows='3' placeholder='Brief description of what you did' />
-                </div>
-              </p>
+            <div className='ui transparent header input'>
+              <input type='text' placeholder='Enter date' />
+            </div>
+            <div className='ui description form'>
+              <div className='ui transparent field'>
+                <textarea rows='3' className='transparent' placeholder='Brief description of what you did' />
+              </div>
             </div>
           </div>
           <div className='ui extra bottom attached one buttons'>

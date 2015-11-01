@@ -1,19 +1,26 @@
 .CalendarPage {
   .mini-calendar {
-    .one-crew {
+    .some-crew {
       background-color: #dfd;
     }
 
-    .two-crew {
-      background-color: #bfb;
+    .many-crew {
+      background-color: #afa;
     }
 
-    .three-crew {
-      background-color: #9f9;
+    .on-duty {
+      border: 2px solid #2185d0;
     }
 
-    .four-crew {
-      background-color: #6f6;
+    .oos {
+      color: #666;
+      background: repeating-linear-gradient(
+        45deg,
+        #ddd,
+        #ddd 6px,
+        #eee 6px,
+        #eee 12px
+      );
     }
   }
 }
