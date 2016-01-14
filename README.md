@@ -1,14 +1,10 @@
 Development
 ===========
 
-I find it helpful to have two terminals open in the background, one running `gulp watch` in the project root, and the other running `jekyll serve` from the `./dist` directory. This way, my changes will be built automatically and I can just hit save and refresh `http://localhost:4000/` in Chrome.
+To get started, run `npm install` followed by `bower install`. Then, run `gulp watch`. This will open up a webserver at [http://localhost:8000][] that automatically refreshes when you update your source files.
 
-Using React
-===========
+Project Structure
+=================
 
-React classes are broken down into the following categories, for the purpose of dependencies:
+The order in which React classes are included is important! If component A uses component B, you need to make sure that component B appears above component A in the Gulpfile.
 
-* **Application**: an Application is the highest level of abstraction. There is just one, and it includes whatever pages/components/utilities it needs.
-* **Pages**: a Page is a high-level class that can use Components and Utilities
-* **Components**: a Component is a block-level class that may use Utilities
-* **Utilities**: a Utility is a low-level class that has no dependencies and is typically used for rendering a very small item various places throughout the application
