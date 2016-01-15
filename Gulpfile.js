@@ -103,10 +103,12 @@ gulp.task('buildDev', [
   'minifyHtml',
   'minifyCss',
   'fonts'
-], function() {
-  gulp.src('dist').pipe(webserver());
+]);
+
+gulp.task('server', function() {
+  return gulp.src('dist').pipe(webserver());
 });
 
-gulp.task('watch', function() {
-  gulp.watch('src/**/*', [ 'buildDev' ]);
+gulp.task('watch', [ 'server' ], function() {
+  return gulp.watch('src/**/*', [ 'buildDev' ]);
 });
