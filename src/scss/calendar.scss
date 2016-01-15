@@ -1,11 +1,13 @@
 .CalendarPage {
   .mini-calendar {
+    $base-green: #21ba45;
+    $base-gray: #767676;
     .some-crew {
-      background-color: #dfd;
+      background-color: lighten($base-green, 50%);
     }
 
     .many-crew {
-      background-color: #afa;
+      background-color: lighten($base-green, 30%);
     }
 
     .on-duty {
@@ -13,14 +15,48 @@
     }
 
     .oos {
-      color: #666;
       background: repeating-linear-gradient(
         45deg,
-        #ddd,
-        #ddd 6px,
-        #eee 6px,
-        #eee 12px
+        lighten($base-gray, 20%),
+        lighten($base-gray, 20%) 6px,
+        lighten($base-gray, 40%) 6px,
+        lighten($base-gray, 40%) 12px
       );
+    }
+  }
+
+  .shifts {
+    .shift {
+      $border-color: #00b5ad;
+      background-color: lighten($border-color, 60%);
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 5px;
+      font-weight: bold;
+      border-top: 2px solid $border-color;
+      border-bottom: 2px solid $border-color;
+
+      .role {
+        font-weight: normal;
+        padding: 5px;
+      }
+
+      @for $hour from 1 through 24 {
+        &.length-#{$hour} {
+          width: #{($hour / 24 * 100)}%;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-right: 2px solid $border-color;
+        }
+      }
+      @for $hour from 0 through 23 {
+        &.offset-#{$hour} {
+          margin-left: #{($hour / 24 * 100)}%;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-left: 2px solid $border-color;
+        }
+      }
     }
   }
 }

@@ -59,6 +59,7 @@ gulp.task('concatJs', [ 'compileJsx', 'bower' ], function() {
     'src/js/*',
     'build/react.js',
     'build/react-dom.js',
+    'build/moment.min.js',
     'build/jsx.js'
   ]).pipe(concat('app.js'))
     .pipe(gulp.dest('dist'));
@@ -68,6 +69,7 @@ gulp.task('bower', function() {
   return gulp.src([
     './bower_components/react/react.js',
     './bower_components/react/react-dom.js',
+    './bower_components/moment/min/moment.min.js',
     './bower_components/bootstrap/dist/css/bootstrap.min.css'
   ]).pipe(gulp.dest('build'));
 });

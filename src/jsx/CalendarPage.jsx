@@ -53,26 +53,31 @@ var CalendarMonthView = React.createClass({
 });
 
 var CalendarShift = React.createClass({
+  getDefaultProperties: function() {
+    return {
+      name: '',
+      unit: '',
+      role: '',
+      renderForDate: new Date(),
+      start: new Date(),
+      end: new Date()
+    };
+  },
   render: function() {
+    var className = 'shift';
+    var startMoment = moment(this.props.start);
+    var endMoment = moment(this.props.end);
+    var today = moment(this.props.renderForDate).startOf('day');
+    var offset = moment.duration(today.diff(startMoment)).as('hours');
+    var length = moment.duration(endMoment.diff(today)).as('hours');
+
+    className += ' offset-' + offset;
+    className += ' length-' + length;
+
     return (
-      <div className='ui card'>
-        <div className='content'>
-          <div className='right floated meta'>
-            <span className='ui red label'>{this.props.role}</span>
-          </div>
-          <div className='header'>{this.props.name}</div>
-          <div className='meta'>
-            <span>{this.props.unit}</span>
-          </div>
-          <div className='description'>
-            <p>From <strong>{this.props.startTime}</strong> on <strong>{this.props.startDay}</strong></p>
-            <p>To <strong>{this.props.endTime}</strong> on <strong>{this.props.endDay}</strong></p>
-          </div>
-        </div>
-        <div className='ui two extra bottom attached buttons'>
-          <div className='ui button'>Change</div>
-          <div className='ui button'>Remove</div>
-        </div>
+      <div className={className}>
+        {this.props.name} {this.props.unit}
+        <span className='role'>{this.props.role}</span>
       </div>
     );
   }
@@ -80,21 +85,37 @@ var CalendarShift = React.createClass({
 
 var CalendarSingleDay = React.createClass({
   render: function() {
+    var shifts = [
+      {
+        name: 'Ben Burwell',
+        unit: '348',
+        role: 'Crew Chief',
+        start: new Date(2000, 1, 1),
+        end: new Date(2000, 1, 7)
+      },
+      {
+        name: 'Ben Burwell',
+        unit: '348',
+        role: 'Crew Chief',
+        start: new Date(2000, 1, 5),
+        end: new Date(2000, 1, 6)
+      }
+    ];
+    shifts = shifts.map(function(shift, idx) {
+      var date = new Date(2000, 1, 5);
+      if (moment(shift.start).isAfter(moment(date).endOf('day'))) {
+        return null;
+      }
+      if (moment(shift.end).isBefore(moment(date).startOf('day'))) {
+        return null;
+      }
+      return <CalendarShift renderForDate={date} {...shift} key={idx} />;
+    });
     return (
       <div>
         <h1 className='ui horizontal divider header'>Wednesday, October 14th 2015</h1>
-        <div className='ui three cards'>
-          <CalendarShift
-            name='Ben Burwell'
-            unit='348'
-            role='Crew Chief'
-            startTime='17:00'
-            startDay='October 14'
-            endTime='08:00'
-            endDay='October 15' />
-          <CalendarShift name='Eli Russ' unit='329' role='Driver' startTime='17:00' endTime='08:00' />
-          <CalendarShift name='E. Russ' unit='329' startTime='17:00' endTime='08:00' />
-          <CalendarShift name='E. Russ' unit='329' role='Training Corps' startTime='17:00' endTime='08:00' />
+        <div className='shifts'>
+          {shifts}
         </div>
       </div>
     );
@@ -118,6 +139,9 @@ var CalendarPage = React.createClass({
         </div>
         <div className='ui hidden divider' />
         <CalendarSingleDay />
+        <div className='ui primary button'>
+          <Icon icon='add' /> Add shift
+        </div>
       </div>
     );
   }
