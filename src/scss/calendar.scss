@@ -1,40 +1,82 @@
 .CalendarPage {
+  // Semantic UI colors
+  $base-green: #21ba45;
+  $base-gray: #767676;
+  $base-blue: #2185d0;
+
+  $my-shift-border: 2px solid $base-blue;
+  $light-gray: lighten($base-gray, 20%);
+  $lighter-gray: lighten($base-gray, 40%);
+  $light-green: lighten($base-green, 30%);
+  $lighter-green: lighten($base-green, 50%);
   .mini-calendar {
-    $base-green: #21ba45;
-    $base-gray: #767676;
     .some-crew {
-      background-color: lighten($base-green, 50%);
+      background-color: $lighter-green;
     }
 
     .many-crew {
-      background-color: lighten($base-green, 30%);
+      background-color: $light-green;
     }
 
     .on-duty {
-      border: 2px solid #2185d0;
+      border: $my-shift-border;
     }
 
     .oos {
       background: repeating-linear-gradient(
         45deg,
-        lighten($base-gray, 20%),
-        lighten($base-gray, 20%) 6px,
-        lighten($base-gray, 40%) 6px,
-        lighten($base-gray, 40%) 12px
+        $light-gray,
+        $light-gray 6px,
+        $lighter-gray 6px,
+        $lighter-gray 12px
       );
+    }
+  }
+
+  .timeline-tickmarks {
+    margin: 0;
+    padding: 0;
+    color: $light-gray;
+    justify-content: space-between;
+    display: flex;
+    
+    .hour {
+      display: inline-block;
+      overflow: hidden;
+      width: 1.5em;
+      line-height: 1.5;
+
+      .rotate {
+        display: inline-block;
+        white-space: nowrap;
+        transform: translate(0,100%) rotate(-90deg);
+        transform-origin: 0 0;
+
+        &:after {
+          content: '';
+          float: left;
+          margin-top: 100%;
+        }
+      }
     }
   }
 
   .shifts {
     .shift {
-      $border-color: #00b5ad;
-      background-color: lighten($border-color, 60%);
       margin-top: 10px;
       margin-bottom: 10px;
       padding: 5px;
       font-weight: bold;
-      border-top: 2px solid $border-color;
-      border-bottom: 2px solid $border-color;
+      border-width: 2px;
+      border-style: solid none;
+      border-color: $light-gray;
+      background-color: $lighter-gray;
+      text-align: center;
+
+      &.me {
+        border-color: $base-blue;
+        background-color: lighten($base-blue, 40%);
+      }
 
       .role {
         font-weight: normal;
@@ -46,7 +88,7 @@
           width: #{($hour / 24 * 100)}%;
           border-top-right-radius: 5px;
           border-bottom-right-radius: 5px;
-          border-right: 2px solid $border-color;
+          border-right-style: solid;
         }
       }
       @for $hour from 0 through 23 {
@@ -54,7 +96,7 @@
           margin-left: #{($hour / 24 * 100)}%;
           border-top-left-radius: 5px;
           border-bottom-left-radius: 5px;
-          border-left: 2px solid $border-color;
+          border-left-style: solid;
         }
       }
     }
