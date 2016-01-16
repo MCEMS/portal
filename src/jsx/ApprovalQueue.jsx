@@ -13,6 +13,10 @@ var QueueItem = React.createClass({
     this.props.approve(this.props.id);
   },
 
+  reject: function() {
+    this.props.reject(this.props.id);
+  },
+
   render: function() {
     return (
       <div className='event'>
@@ -31,7 +35,7 @@ var QueueItem = React.createClass({
           </div>
           <div className='meta'>
             <div onClick={this.approve} className='ui tiny compact green button'><Icon icon='check' /> Approve</div>
-            <div className='ui tiny compact basic red button'><Icon icon='remove' /> Reject</div>
+            <div onClick={this.reject} className='ui tiny compact basic red button'><Icon icon='remove' /> Reject</div>
           </div>
         </div>
       </div>
@@ -55,7 +59,7 @@ var CertificationQueueItem = React.createClass({
   render: function() {
     var summary = this.props.name + ' added a certification';
     var body = <div>
-      <strong>{this.props.certification}</strong> certification <strong>{this.props.number}</strong> expiring on <strong>{this.props.expires}</strong>.
+      <strong>{this.props.type}</strong> certification <strong>{this.props.number}</strong> expiring on <strong>{this.props.expires.format('MMMM Do, YYYY')}</strong>.
     </div>;
 
     return (
@@ -76,7 +80,6 @@ var ServiceCreditQueueItem = React.createClass({
         icon='wait'
         summary={summary}
         body={this.props.description}
-        approve={this.props.approve}
         {...this.props} />
     );
   }
@@ -88,18 +91,29 @@ var ApprovalQueue = React.createClass({
     var serviceCreditRequests = this.props.serviceCredits.filter(function(credit) {
       return (credit.approver === '');
     }).map(function(credit) {
-      return <ServiceCreditQueueItem approve={component.props.serviceCreditApprovalHandler} key={credit.id} {...credit} />;
+      return (<ServiceCreditQueueItem
+        approve={component.props.serviceCreditApprovalHandler}
+        reject={component.props.serviceCreditDeletionHandler}
+        key={credit.id}
+        {...credit}
+      />);
+    });
+    var certificationRequests = this.props.certifications.filter(function(cert) {
+      return (cert.approver === '');
+    }).map(function(cert) {
+      return (<CertificationQueueItem
+        approve={component.props.certificationApprovalHandler}
+        reject={component.props.certificationDeletionHandler}
+        key={cert.id}
+        {...cert}
+      />);
     });
     return (
       <div className='ui feed'>
         <RoleRequestQueueItem
           name='Eli Russ'
           role='Crew Chief Trainee' />
-        <CertificationQueueItem
-          name='Mark Tamarin'
-          certification='Pennsylvania EMT'
-          number='123456'
-          expires='December 31, 2016' />
+        {certificationRequests}
         {serviceCreditRequests}
       </div>
     );

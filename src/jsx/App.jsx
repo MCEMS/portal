@@ -12,6 +12,13 @@ var App = React.createClass({
       serviceCredits: this.state.serviceCredits.concat([credit])
     });
   },
+  deleteServiceCredit: function(id) {
+    this.setState({
+      serviceCredits: this.state.serviceCredits.filter(function(credit) {
+        return (credit.id !== id);
+      })
+    });
+  },
   approveServiceCredit: function(id) {
     this.setState({
       serviceCredits: this.state.serviceCredits.map(function(credit) {
@@ -19,6 +26,38 @@ var App = React.createClass({
           credit.approver = 'Ron Weasley';
         }
         return credit;
+      })
+    });
+  },
+  createCertification: function(type, number, issued, expires) {
+    var cert = {
+      id: this.state.certifications.length + 1,
+      approver: '',
+      name: 'Ron Weasley',
+      type: type,
+      number: number,
+      issued: moment(issued),
+      expires: moment(expires),
+      requestedAt: moment()
+    };
+    this.setState({
+      certifications: this.state.certifications.concat([cert])
+    });
+  },
+  deleteCertification: function(id) {
+    this.setState({
+      certifications: this.state.certifications.filter(function(cert) {
+        return (cert.id !== id);
+      })
+    });
+  },
+  approveCertification: function(id) {
+    this.setState({
+      certifications: this.state.certifications.map(function(cert) {
+        if (cert.id === id) {
+          cert.approver = 'Ron Weasley';
+        }
+        return cert;
       })
     });
   },
@@ -69,33 +108,33 @@ var App = React.createClass({
       certifications: [
         {
           id: 1,
-          name: 'TB Test',
+          type: 'TB Test',
           issued: moment([2015, 9, 10]),
           expires: moment([2016, 9, 12])
         },
         {
           id: 2,
-          name: 'NREMT',
+          type: 'NREMT',
           number: 'E3198634',
           issued: moment([2015, 9, 10]),
           expires: moment([2016, 9, 10])
         },
         {
           id: 3,
-          name:'Driver&apos;s License',
+          type:'Driver&apos;s License',
           number:'E3105BNN96101',
           issued: moment([2015, 9, 10]),
           expires: moment([2016, 9, 10])
         },
         {
           id: 4,
-          name:'CPR',
+          type:'CPR',
           issued: moment([2015, 9, 10]),
           expires: moment([2016, 9, 10])
         },
         {
           id: 5,
-          name:'CEVO',
+          type:'CEVO',
           issued: moment([2015, 9, 10]),
           expires: moment([2016, 9, 10]),
           number:'123456789'
@@ -104,17 +143,17 @@ var App = React.createClass({
           id: 6,
           issued: moment([2015, 9, 10]),
           expires: moment([2016, 9, 10]),
-          name:'IS 100'
+          type:'IS 100'
         },
         {
           id: 7,
           issued: moment([2015, 9, 10]),
           expires: moment([2016, 9, 10]),
-          name:'IS 200'
+          type:'IS 200'
         },
         {
           id: 8,
-          name:'IS 700',
+          type:'IS 700',
           issued: moment([2015, 9, 10]),
           expires: moment([2016, 9, 10])
         }

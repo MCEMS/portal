@@ -5,7 +5,11 @@ var ProfilePage = React.createClass({
         <div className='twelve wide column'>
           <ApprovalQueue
             serviceCredits={this.props.app.state.serviceCredits}
+            certifications={this.props.app.state.certifications}
             serviceCreditApprovalHandler={this.props.app.approveServiceCredit}
+            serviceCreditDeletionHandler={this.props.app.deleteServiceCredit}
+            certificationApprovalHandler={this.props.app.approveCertification}
+            certificationDeletionHandler={this.props.app.deleteCertification}
           />
           <div className='ui hidden divider' />
           <h1 className='ui horizontal divider header'>Contact Details</h1>
@@ -18,7 +22,10 @@ var ProfilePage = React.createClass({
             Don&rsquo;t see the one you have in the dropdown? Ask an admin to add it.
           </p>
           <p><strong>Note:</strong> It may take some time for your newly added certification to appear here, as it will need to be verified by an admin.</p>
-          <MemberCertifications certifications={this.props.app.state.certifications} />
+          <MemberCertifications
+            certifications={this.props.app.state.certifications}
+            addCert={this.props.app.createCertification}
+          />
           <div className='ui hidden divider' />
           <h1 className='ui horizontal divider header'>Service Credits</h1>
           <p>These are your approved service credits from this semester. To get started, just enter a brief description of what you did and submit it for approval!</p>
