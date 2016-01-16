@@ -1,11 +1,16 @@
 var QueueItem = React.createClass({
   getDefaultProps: function() {
     return {
-      time: 'now',
+      requestedAt: moment(),
       summary: <div>Something happened!</div>,
       body: <div />,
-      icon: ''
+      icon: '',
+      approve: function(){}
     };
+  },
+
+  approve: function() {
+    this.props.approve(this.props.id);
   },
 
   render: function() {
@@ -18,14 +23,14 @@ var QueueItem = React.createClass({
           <div className='summary'>
             {this.props.summary}
             <div className='date'>
-              {this.props.time}
+              <RelativeTime time={this.props.requestedAt} />
             </div>
           </div>
           <div className='extra text'>
             {this.props.body}
           </div>
           <div className='meta'>
-            <div className='ui tiny compact green button'><Icon icon='check' /> Approve</div>
+            <div onClick={this.approve} className='ui tiny compact green button'><Icon icon='check' /> Approve</div>
             <div className='ui tiny compact basic red button'><Icon icon='remove' /> Reject</div>
           </div>
         </div>
@@ -71,6 +76,7 @@ var ServiceCreditQueueItem = React.createClass({
         icon='wait'
         summary={summary}
         body={this.props.description}
+        approve={this.props.approve}
         {...this.props} />
     );
   }
@@ -78,22 +84,23 @@ var ServiceCreditQueueItem = React.createClass({
 
 var ApprovalQueue = React.createClass({
   render: function() {
+    var component = this;
+    var serviceCreditRequests = this.props.serviceCredits.filter(function(credit) {
+      return (credit.approver === '');
+    }).map(function(credit) {
+      return <ServiceCreditQueueItem approve={component.props.serviceCreditApprovalHandler} key={credit.id} {...credit} />;
+    });
     return (
       <div className='ui feed'>
         <RoleRequestQueueItem
           name='Eli Russ'
-          role='Crew Chief Trainee'
-          time='2 days ago' />
+          role='Crew Chief Trainee' />
         <CertificationQueueItem
           name='Mark Tamarin'
           certification='Pennsylvania EMT'
           number='123456'
-          expires='December 31, 2016'
-          time='3 days ago' />
-        <ServiceCreditQueueItem
-          name='Ashley Landesman'
-          description='I was at the presidential inauguration for the whole time'
-          time='a week ago' />
+          expires='December 31, 2016' />
+        {serviceCreditRequests}
       </div>
     );
   }

@@ -16,6 +16,7 @@ gulp.task('static', function() {
 
 gulp.task('compileJsx', function() {
   return gulp.src([
+    'src/jsx/RelativeTime.jsx',
     'src/jsx/Icon.jsx',
     'src/jsx/ApprovalQueue.jsx',
     'src/jsx/Button.jsx',

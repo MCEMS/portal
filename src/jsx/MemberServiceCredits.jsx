@@ -1,40 +1,81 @@
 var MemberServiceCredit = React.createClass({
   render: function() {
-    return (
-      <div className='ui card'>
-        <div className='content'>
-          <div className='header'>{this.props.date}</div>
-          <div className='description'>{this.props.description}</div>
-        </div>
+    var extra = <div className='extra'>Pending approval</div>;
+    if (this.props.approver) {
+      extra = (
         <div className='extra'>
           <Icon icon='check' color='green' /> Approved by {this.props.approver}
         </div>
+      );
+    }
+    return (
+      <div className='ui card'>
+        <div className='content'>
+          <div className='header'>{this.props.performedAt.format('MMMM Do, YYYY')}</div>
+          <div className='description'>{this.props.description}</div>
+        </div>
+        {extra}
       </div>
     );
   }
 });
 
 var MemberServiceCredits = React.createClass({
+  getDefaultProps: function() {
+    return {
+      serviceCredits: []
+    };
+  },
+  getInitialState: function() {
+    return {
+      date: null,
+      description: ''
+    };
+  },
+  addServiceCredit: function() {
+    this.props.handleNewCredit(this.state.date, this.state.description);
+    this.setState({
+      date: null,
+      description: ''
+    });
+  },
+  handleDateChange: function(event) {
+    this.setState({ date: event.target.value });
+  },
+  handleDescriptionChange: function(event) {
+    this.setState({ description: event.target.value });
+  },
   render: function() {
+    var credits = this.props.serviceCredits.map(function(credit) {
+      return <MemberServiceCredit key={credit.id} {...credit} />;
+    });
     return (
       <div className='ui three cards'>
-        <MemberServiceCredit approver='Eli Russ' date='January 3rd' description='Completed standby for St. Patricks Day 5K from 12:15pm to 1:30pm.' />
-        <MemberServiceCredit approver='Ashley Landesman' date='May 15th' description='Attended Smash Mouth concert standby from 9:00pm to 11:30pm.'/>
-        <MemberServiceCredit approver='Mark Tamarin' date='September 27th' description='Completed through the Red Doors MCEMS tabling for the full 2.5 hours.'/>
-        <MemberServiceCredit approver='Ashley Landesman' date='October 1st' description='Tabled for MCEMS at the Fall 2015 Activities Fair from 1530 to 1800. Helped crew set up table and recruit interested new members.'/>
+        {credits}
         <div className='ui card'>
           <div className='content'>
             <div className='ui transparent header input'>
-              <input type='text' placeholder='Enter date' />
+              <input
+                value={this.state.date}
+                onChange={this.handleDateChange}
+                type='text'
+                placeholder='Enter date'
+              />
             </div>
             <div className='ui description form'>
               <div className='ui transparent field'>
-                <textarea rows='3' className='transparent' placeholder='Brief description of what you did' />
+                <textarea
+                  rows='3'
+                  onChange={this.handleDescriptionChange}
+                  value={this.state.description}
+                  className='transparent'
+                  placeholder='Brief description of what you did'
+                />
               </div>
             </div>
           </div>
           <div className='ui extra bottom attached one buttons'>
-            <div className='ui green button'>Submit for approval</div>
+            <div className='ui green button' onClick={this.addServiceCredit}>Submit for approval</div>
           </div>
         </div>
       </div>

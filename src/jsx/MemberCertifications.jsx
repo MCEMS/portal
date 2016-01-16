@@ -1,11 +1,14 @@
 var MemberCertification = React.createClass({
   render: function() {
+    var dateFormat = 'MMMM Do, YYYY';
+    var issued = this.props.issued? this.props.issued.format(dateFormat) : '';
+    var expires = this.props.expires? this.props.expires.format(dateFormat) : '';
     return (
       <tr>
         <td>{this.props.name}</td>
         <td className='center aligned'>{this.props.number}</td>
-        <td className='center aligned'>{this.props.issued}</td>
-        <td className='center aligned'>{this.props.expires}</td>
+        <td className='center aligned'>{issued}</td>
+        <td className='center aligned'>{expires}</td>
         <td><button className='ui tiny red basic fluid button'><Icon icon='trash outline' /> Delete</button></td>
       </tr>
     );
@@ -14,6 +17,9 @@ var MemberCertification = React.createClass({
 
 var MemberCertifications = React.createClass({
   render: function() {
+    var certs = this.props.certifications.map(function(cert) {
+      return <MemberCertification key={cert.id} {...cert} />;
+    });
     return (
       <table className='ui padded table'>
         <thead>
@@ -26,31 +32,7 @@ var MemberCertifications = React.createClass({
           </tr>
         </thead>
         <tbody>
-          <MemberCertification
-            name='TB Test'
-            issued='September 10th, 2015'
-            expires='September 10th, 2016' />
-          <MemberCertification
-            name='NREMT'
-            number='E3198634'
-            issued='June 15th, 2015'
-            expires='March 31th, 2017' />
-          <MemberCertification
-            name='Driver&apos;s License'
-            number='E3105BNN96101'
-            issued='June 2nd, 2012'
-            expires='May 10th, 2017' />
-          <MemberCertification
-            name='CPR'
-            issued='June 15th, 2015'
-            expires='June 1st, 2017' />
-          <MemberCertification
-            name='CEVO'
-            issued='June 16th, 2015'
-            number='123456789' />
-          <MemberCertification issued='May 8th, 2015' name='IS 100' />
-          <MemberCertification issued='June 16th, 2015' name='IS 200' />
-          <MemberCertification issued='May 8th, 2015' name='IS 700' />
+          {certs}
         </tbody>
         <tfoot>
           <tr>
