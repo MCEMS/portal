@@ -15,6 +15,11 @@ var NavTab = React.createClass({
     };
   },
 
+
+  getInitialState: function() {
+    return {};
+  },
+
   render: function() {
     var className = 'item';
     if (this.props.active) {

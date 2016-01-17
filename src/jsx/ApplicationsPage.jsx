@@ -1,4 +1,11 @@
 var ApplicationsPage = React.createClass({
+  propTypes: {},
+  getDefaultProps: function() {
+    return {};
+  },
+  getInitialState: function() {
+    return {};
+  },
   render: function() {
     return (
       <div className="blankslate">

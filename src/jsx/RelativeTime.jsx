@@ -1,8 +1,14 @@
 var RelativeTime = React.createClass({
+  propTypes: {
+    time: React.PropTypes.instanceOf(moment)
+  },
   getDefaultProps: function() {
     return {
       time: moment()
     };
+  },
+  getInitialState: function() {
+    return {};
   },
   componentDidMount: function() {
     var updateIntervalSeconds = 60;

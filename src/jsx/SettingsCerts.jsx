@@ -1,28 +1,13 @@
-var SettingsCertRow = React.createClass({
-  getDefaultProps: function() {
-    return {
-      label: ''
-    };
+var SettingsCerts = React.createClass({
+  propTypes: {
+    certifications: React.PropTypes.array,
+    createCertificationType: React.PropTypes.func
   },
 
-  render: function() {
-    return (
-      <tr>
-        <td>
-          <div className='ui large label'>{this.props.type}</div>
-        </td>
-        <td className='right aligned'>
-          <button className='ui fluid basic button'><Icon icon='pencil' /> Edit</button>
-        </td>
-      </tr>
-    );
-  }
-});
-
-var SettingsCerts = React.createClass({
   getDefaultProps: function() {
     return {
-      certifications: []
+      certifications: [],
+      createCertificationType: function() {}
     };
   },
 

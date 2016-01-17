@@ -1,4 +1,15 @@
 var ProfilePage = React.createClass({
+  propTypes: {
+    app: React.PropTypes.any.isRequired
+  },
+  getDefaultProps: function() {
+    return {
+      app: null,
+    };
+  },
+  getInitialState: function() {
+    return {};
+  },
   render: function() {
     return (
       <div className='ui stackable grid'>

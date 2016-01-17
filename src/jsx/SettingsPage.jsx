@@ -1,4 +1,15 @@
 var SettingsPage = React.createClass({
+  propTypes: {
+    app: React.PropTypes.any.isRequired
+  },
+  getDefaultProps: function() {
+    return {
+      app: null
+    };
+  },
+  getInitialState: function() {
+    return {};
+  },
   getRoles: function() {
     return [
       { role: 'Life Member' },

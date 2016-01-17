@@ -1,25 +1,14 @@
-var ExpiringCert = React.createClass({
-  render: function() {
-    var dateString = this.props.date.fromNow();
-    return (
-      <div className='item'>
-        <Icon icon='certificate' />
-        <div className='content'>
-          <div className='header'>{this.props.name}</div>
-          <div className='description'>
-            <RelativeTime time={this.props.date} />
-          </div>
-        </div>
-      </div>
-    );
-  }
-});
-
 var ExpiringCerts = React.createClass({
+  propTypes: {
+    certifications: React.PropTypes.array
+  },
   getDefaultProps: function() {
     return {
       certifications: []
     };
+  },
+  getInitialState: function() {
+    return {};
   },
   shouldRenderCert: function(cert) {
     var cutoff = moment().add(3, 'months');

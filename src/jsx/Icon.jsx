@@ -11,6 +11,10 @@ var Icon = React.createClass({
     };
   },
 
+  getInitialState: function() {
+    return {};
+  },
+
   render: function() {
     var className = 'icon ' + this.props.icon + ' ' + this.props.color;
     return (

@@ -1,74 +1,7 @@
 var App = React.createClass({
-  createServiceCredit: function(date, description) {
-    var credit = {
-      id: this.state.serviceCredits.length + 1,
-      approver: '',
-      name: 'Ron Weasley',
-      requestedAt: moment(),
-      performedAt: moment(date),
-      description: description
-    };
-    this.setState({
-      serviceCredits: this.state.serviceCredits.concat([credit])
-    });
-  },
-  deleteServiceCredit: function(id) {
-    this.setState({
-      serviceCredits: this.state.serviceCredits.filter(function(credit) {
-        return (credit.id !== id);
-      })
-    });
-  },
-  approveServiceCredit: function(id) {
-    this.setState({
-      serviceCredits: this.state.serviceCredits.map(function(credit) {
-        if (credit.id === id) {
-          credit.approver = 'Ron Weasley';
-        }
-        return credit;
-      })
-    });
-  },
-  createCertification: function(type, number, issued, expires) {
-    var cert = {
-      id: this.state.certifications.length + 1,
-      approver: '',
-      name: 'Ron Weasley',
-      type: type,
-      number: number,
-      issued: moment(issued),
-      expires: moment(expires),
-      requestedAt: moment()
-    };
-    this.setState({
-      certifications: this.state.certifications.concat([cert])
-    });
-  },
-  deleteCertification: function(id) {
-    this.setState({
-      certifications: this.state.certifications.filter(function(cert) {
-        return (cert.id !== id);
-      })
-    });
-  },
-  approveCertification: function(id) {
-    this.setState({
-      certifications: this.state.certifications.map(function(cert) {
-        if (cert.id === id) {
-          cert.approver = 'Ron Weasley';
-        }
-        return cert;
-      })
-    });
-  },
-  createCertificationType: function(name) {
-    var type = {
-      id: this.state.certificationTypes.length + 1,
-      type: name
-    };
-    this.setState({
-      certificationTypes: this.state.certificationTypes.concat([type])
-    });
+  propTypes: {},
+  getDefaultProps: function() {
+    return {};
   },
   getInitialState: function() {
     return {
@@ -183,6 +116,77 @@ var App = React.createClass({
       ]
     };
   },
+  createServiceCredit: function(date, description) {
+    var credit = {
+      id: this.state.serviceCredits.length + 1,
+      approver: '',
+      name: 'Ron Weasley',
+      requestedAt: moment(),
+      performedAt: moment(date),
+      description: description
+    };
+    this.setState({
+      serviceCredits: this.state.serviceCredits.concat([credit])
+    });
+  },
+  deleteServiceCredit: function(id) {
+    this.setState({
+      serviceCredits: this.state.serviceCredits.filter(function(credit) {
+        return (credit.id !== id);
+      })
+    });
+  },
+  approveServiceCredit: function(id) {
+    this.setState({
+      serviceCredits: this.state.serviceCredits.map(function(credit) {
+        if (credit.id === id) {
+          credit.approver = 'Ron Weasley';
+        }
+        return credit;
+      })
+    });
+  },
+  createCertification: function(type, number, issued, expires) {
+    var cert = {
+      id: this.state.certifications.length + 1,
+      approver: '',
+      name: 'Ron Weasley',
+      type: type,
+      number: number,
+      issued: moment(issued),
+      expires: moment(expires),
+      requestedAt: moment()
+    };
+    this.setState({
+      certifications: this.state.certifications.concat([cert])
+    });
+  },
+  deleteCertification: function(id) {
+    this.setState({
+      certifications: this.state.certifications.filter(function(cert) {
+        return (cert.id !== id);
+      })
+    });
+  },
+  approveCertification: function(id) {
+    this.setState({
+      certifications: this.state.certifications.map(function(cert) {
+        if (cert.id === id) {
+          cert.approver = 'Ron Weasley';
+        }
+        return cert;
+      })
+    });
+  },
+  createCertificationType: function(name) {
+    var type = {
+      id: this.state.certificationTypes.length + 1,
+      type: name
+    };
+    this.setState({
+      certificationTypes: this.state.certificationTypes.concat([type])
+    });
+  },
 
   nav: function(page) {
     var self = this;
@@ -213,44 +217,45 @@ var App = React.createClass({
       <div>
         <nav className='ui fixed inverted menu'>
           <NavTab
-            active={this.state.page == 'profile'}
+            active={this.state.page === 'profile'}
             icon='home'
             text='Profile'
             onClick={this.nav('profile')} />
           <NavTab
-            active={this.state.page == 'calendar'}
+            active={this.state.page === 'calendar'}
             icon='calendar outline'
             text='Calendar'
             onClick={this.nav('calendar')} />
           <NavTab
-            active={this.state.page == 'members'}
+            active={this.state.page === 'members'}
             icon='users'
             text='Members'
             onClick={this.nav('members')} />
           <NavTab
-            active={this.state.page == 'accounts'}
+            active={this.state.page === 'accounts'}
             icon='globe'
             text='Accounts'
             onClick={this.nav('accounts')} />
           <NavTab
-            active={this.state.page == 'applications'}
+            active={this.state.page === 'applications'}
             icon='inbox'
             text='Applications'
             onClick={this.nav('applications')} />
           <NavTab
-            active={this.state.page == 'broadcast'}
+            active={this.state.page === 'broadcast'}
             icon='bullhorn'
             text='Broadcast'
             onClick={this.nav('broadcast')} />
           <div className='right menu'>
             <NavTab
-              active={this.state.page == 'settings'}
+              active={this.state.page === 'settings'}
               icon='settings'
               text='Settings'
               onClick={this.nav('settings')} />
             <NavTab
               icon='sign out'
-              text='Log Out' />
+              text='Log Out'
+              />
           </div>
         </nav>
         <div className='ui container'>

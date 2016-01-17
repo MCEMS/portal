@@ -17,6 +17,10 @@ var Button = React.createClass({
     };
   },
 
+  getInitialState: function() {
+    return {};
+  },
+
   getClassName: function() {
     var className = 'btn';
     

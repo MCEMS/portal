@@ -1,4 +1,37 @@
 var MemberInfoEdit = React.createClass({
+  propTypes: {
+    member: React.PropTypes.shape({
+      first_name: React.PropTypes.string,
+      last_name: React.PropTypes.string,
+      phone: React.PropTypes.string,
+      email: React.PropTypes.string,
+      campus_address: React.PropTypes.string,
+      class_year: React.PropTypes.string,
+      campus_mailbox: React.PropTypes.string,
+      home_address: React.PropTypes.string,
+      home_city: React.PropTypes.string,
+      home_zip: React.PropTypes.string
+    })
+  },
+  getDefaultProps: function() {
+    return {
+      member: {
+        first_name: '',
+        last_name: '',
+        phone: '',
+        email: '',
+        campus_address: '',
+        class_year: '',
+        campus_mailbox: '',
+        home_address: '',
+        home_city: '',
+        home_zip: ''
+      }
+    };
+  },
+  getInitialState: function() {
+    return {};
+  },
   render: function() {
     return (
       <form className='ui large form fluid'>
