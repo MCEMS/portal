@@ -16,14 +16,21 @@ gulp.task('static', function() {
 
 gulp.task('compileJsx', function() {
   return gulp.src([
+    // utilities
     'src/jsx/RelativeTime.jsx',
     'src/jsx/Icon.jsx',
+    'src/jsx/Button.jsx',
+
+    // approval queue
     'src/jsx/QueueItem.jsx',
     'src/jsx/RoleRequestQueueItem.jsx',
     'src/jsx/CertificationQueueItem.jsx',
     'src/jsx/ServiceCreditQueueItem.jsx',
     'src/jsx/ApprovalQueue.jsx',
-    'src/jsx/Button.jsx',
+    'src/jsx/UpcomingShift.jsx',
+    'src/jsx/UpcomingShifts.jsx',
+
+    // profile page components
     'src/jsx/ExpiringCert.jsx',
     'src/jsx/ExpiringCerts.jsx',
     'src/jsx/MemberCertification.jsx',
@@ -33,24 +40,33 @@ gulp.task('compileJsx', function() {
     'src/jsx/MemberInfoEdit.jsx',
     'src/jsx/MemberServiceCredit.jsx',
     'src/jsx/MemberServiceCredits.jsx',
-    'src/jsx/NavTab.jsx',
+
+    // settings page components
     'src/jsx/SettingsCertRow.jsx',
     'src/jsx/SettingsCerts.jsx',
     'src/jsx/SettingsRoleRow.jsx',
     'src/jsx/SettingsRoles.jsx',
-    'src/jsx/UpcomingShift.jsx',
-    'src/jsx/UpcomingShifts.jsx',
-    'src/jsx/AccountsPage.jsx',
-    'src/jsx/ApplicationsPage.jsx',
-    'src/jsx/BroadcastPage.jsx',
+
+    // calendar components
     'src/jsx/CalendarMonthView.jsx',
     'src/jsx/CalendarShift.jsx',
     'src/jsx/CalendarSingleDay.jsx',
+
+    // pages
+    'src/jsx/AccountsPage.jsx',
+    'src/jsx/ApplicationsPage.jsx',
+    'src/jsx/BroadcastPage.jsx',
     'src/jsx/CalendarPage.jsx',
     'src/jsx/MembersPage.jsx',
     'src/jsx/ProfilePage.jsx',
     'src/jsx/SettingsPage.jsx',
-    'src/jsx/App.jsx'
+
+    // global components
+    'src/jsx/NavTab.jsx',
+    'src/jsx/App.jsx',
+
+    // bootstrap the app
+    'src/jsx/_bootstrap.jsx'
   ]).pipe(babel())
     .pipe(concat('jsx.js'))
     .pipe(gulp.dest('build'));
@@ -71,10 +87,10 @@ gulp.task('minifyJs', [ 'concatJs' ], function() {
 
 gulp.task('concatJs', [ 'compileJsx', 'bower' ], function() {
   return gulp.src([
-    'src/js/*',
     'build/react.js',
     'build/react-dom.js',
     'build/moment.min.js',
+    'src/js/*',
     'build/jsx.js'
   ]).pipe(concat('app.js'))
     .pipe(gulp.dest('dist'));

@@ -23,6 +23,9 @@ var SettingsCerts = React.createClass({
 
   create: function() {
     this.props.createCertificationType(this.state.type);
+    this.setState({
+      type: ''
+    });
   },
 
   render: function() {

@@ -50,7 +50,7 @@ var SettingsPage = React.createClass({
         <div className='column'>
           <SettingsCerts
             certifications={this.props.app.state.certificationTypes}
-            createCertificationType={this.props.app.createCertificationType}
+            createCertificationType={this.props.app.props.dataSource.CertificationTypes.create}
           />
         </div>
         <div className='column'>
