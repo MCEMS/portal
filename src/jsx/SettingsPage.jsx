@@ -10,39 +10,6 @@ var SettingsPage = React.createClass({
   getInitialState: function() {
     return {};
   },
-  getRoles: function() {
-    return [
-      { role: 'Life Member' },
-      {
-        role: 'Crew Chief',
-        color: 'teal',
-        showOnSchedule: true
-      },
-      { role: 'Crew Chief Trainee' },
-      {
-        role: 'Driver',
-        color: 'violet',
-        showOnSchedule: true
-      },
-      { role: 'Driver Trainee' },
-      { role: 'General Member' },
-      { role: 'Probationary Member' },
-      {
-        role: 'Training Corps',
-        color: 'orange',
-        showOnSchedule: true
-      },
-      { role: 'Captain' },
-      { role: 'Lieutenant' },
-      { role: 'President' },
-      { role: 'Secretary' },
-      { role: 'Treasurer' },
-      { role: 'Corresponding Secretary' },
-      { role: 'Infection Control Officer' },
-      { role: 'Technology Officer' },
-      { role: 'Social Coordinator' },
-    ];
-  },
 
   render: function() {
     return (
@@ -54,7 +21,11 @@ var SettingsPage = React.createClass({
           />
         </div>
         <div className='column'>
-          <SettingsRoles roles={this.getRoles()} />
+          <SettingsRoles
+            roles={this.props.app.state.roles}
+            createRole={this.props.app.props.dataSource.Roles.create}
+            updateRole={this.props.app.props.dataSource.Roles.update}
+          />
         </div>
       </div>
     );

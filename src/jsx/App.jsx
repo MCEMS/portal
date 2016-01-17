@@ -9,12 +9,18 @@ var App = React.createClass({
       certificationTypes: this.props.dataSource.CertificationTypes.all(),
       members: this.props.dataSource.Members.all(),
       serviceCredits: this.props.dataSource.ServiceCredits.all(),
-      certifications: this.props.dataSource.Certifications.all()
+      certifications: this.props.dataSource.Certifications.all(),
+      roles: this.props.dataSource.Roles.all()
     };
   },
 
   componentDidMount: function() {
     var self = this;
+    this.props.dataSource.Roles.register(function(roles) {
+      self.setState({
+        roles: roles
+      });
+    });
     this.props.dataSource.CertificationTypes.register(function(types) {
       self.setState({
         certificationTypes: types

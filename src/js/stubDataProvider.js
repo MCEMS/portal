@@ -5,6 +5,7 @@
   var certificationsCallback;
   var membersCallback;
   var serviceCreditsCallback;
+  var rolesCallback;
   var certificationTypes = [
     {
       id: 1,
@@ -113,6 +114,65 @@
       expires: moment([2016, 9, 10])
     }
   ];
+  var roles = [
+    { id: 1, role: 'Life Member' },
+    {
+      id: 2,
+      role: 'Crew Chief',
+      showOnSchedule: true
+    },
+    { id: 3, role: 'Crew Chief Trainee' },
+    {
+      id: 4,
+      role: 'Driver',
+      showOnSchedule: true
+    },
+    { id: 5, role: 'Driver Trainee' },
+    { id: 6, role: 'General Member' },
+    { id: 7, role: 'Probationary Member' },
+    {
+      id: 8,
+      role: 'Training Corps',
+      showOnSchedule: true
+    },
+    { id: 9, role: 'Captain' },
+    { id: 10, role: 'Lieutenant' },
+    { id: 11, role: 'President' },
+    { id: 12, role: 'Secretary' },
+    { id: 13, role: 'Treasurer' },
+    { id: 14, role: 'Corresponding Secretary' },
+    { id: 15, role: 'Infection Control Officer' },
+    { id: 16, role: 'Technology Officer' },
+    { id: 17, role: 'Social Coordinator' },
+  ];
+
+  StubDataProvider.Roles = {
+    register: function(callback) {
+      rolesCallback = callback;
+    },
+    all: function() {
+      return roles;
+    },
+    create: function(name, showOnSchedule) {
+      var role = {
+        id: roles.length + 1,
+        role: name,
+        showOnSchedule: showOnSchedule
+      };
+      roles = roles.concat([role]);
+      rolesCallback(roles);
+    },
+    update: function(id, newRole) {
+      roles = roles.map(function(role) {
+        if (role.id === id) {
+          return newRole;
+        } else {
+          return role;
+        }
+      });
+      rolesCallback(roles);
+    }
+  };
 
   StubDataProvider.CertificationTypes = {
     register: function(callback) {

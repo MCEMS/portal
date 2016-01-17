@@ -1,15 +1,18 @@
 var SettingsRoleRow = React.createClass({
   propTypes: {
+    id: React.PropTypes.number,
     role: React.PropTypes.string,
-    color: React.PropTypes.string,
-    showOnSchedule: React.PropTypes.bool
+    showOnSchedule: React.PropTypes.bool,
+    updateRole: React.PropTypes.func
   },
 
   getDefaultProps: function() {
     return {
+      id: 0,
       role: '',
       color: '',
-      showOnSchedule: false
+      showOnSchedule: false,
+      updateRole: function() {}
     };
   },
 
@@ -17,16 +20,27 @@ var SettingsRoleRow = React.createClass({
     return {};
   },
 
+  toggleShowOnSchedule: function() {
+    this.props.updateRole(this.props.id, {
+      id: this.props.id,
+      role: this.props.role,
+      showOnSchedule: !this.props.showOnSchedule
+    });
+  },
+
   render: function() {
-    var className = 'ui ' + this.props.color + ' large label';
     return (
       <tr>
         <td>
-          <div className={className}>{this.props.role}</div>
+          <div className='ui large label'>{this.props.role}</div>
         </td>
         <td className='center aligned'>
           <div className='ui toggle checkbox'>
-            <input type='checkbox' checked={this.props.showOnSchedule} />
+            <input
+              type='checkbox'
+              checked={this.props.showOnSchedule}
+              onChange={this.toggleShowOnSchedule}
+            />
             <label></label>
           </div>
         </td>
