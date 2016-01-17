@@ -1,4 +1,7 @@
 var MemberCertification = React.createClass({
+  remove: function() {
+    this.props.deleteCert(this.props.id);
+  },
   render: function() {
     var dateFormat = 'MMMM Do, YYYY';
     var issued = this.props.issued? this.props.issued.format(dateFormat) : '';
@@ -9,7 +12,7 @@ var MemberCertification = React.createClass({
         <td className='center aligned'>{this.props.number}</td>
         <td className='center aligned'>{issued}</td>
         <td className='center aligned'>{expires}</td>
-        <td><button className='ui tiny red basic fluid button'><Icon icon='trash outline' /> Delete</button></td>
+        <td><button onClick={this.remove} className='ui tiny red basic fluid button'><Icon icon='trash outline' /> Delete</button></td>
       </tr>
     );
   }
@@ -18,7 +21,7 @@ var MemberCertification = React.createClass({
 var MemberCertifications = React.createClass({
   getInitialState: function() {
     return {
-      type: 'EMT',
+      type: this.props.types[0].type,
       number: '',
       issued: '',
       expires: ''
@@ -50,10 +53,14 @@ var MemberCertifications = React.createClass({
     });
   },
   render: function() {
+    var component = this;
     var certs = this.props.certifications.filter(function(cert) {
       return (cert.approver !== '');
     }).map(function(cert) {
-      return <MemberCertification key={cert.id} {...cert} />;
+      return <MemberCertification deleteCert={component.props.deleteCert} key={cert.id} {...cert} />;
+    });
+    var types = this.props.types.map(function(type) {
+      return <option value={type.type} key={type.id}>{type.type}</option>;
     });
     return (
       <table className='ui padded table'>
@@ -74,7 +81,7 @@ var MemberCertifications = React.createClass({
             <th className='ui form'>
               <div className='field'>
                 <select value={this.state.type} onChange={this.handleTypeUpdate}>
-                  <option>EMT</option>
+                  {types}
                 </select>
               </div>
             </th>

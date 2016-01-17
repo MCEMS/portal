@@ -24,7 +24,9 @@ var ProfilePage = React.createClass({
           <p><strong>Note:</strong> It may take some time for your newly added certification to appear here, as it will need to be verified by an admin.</p>
           <MemberCertifications
             certifications={this.props.app.state.certifications}
+            types={this.props.app.state.certificationTypes}
             addCert={this.props.app.createCertification}
+            deleteCert={this.props.app.deleteCertification}
           />
           <div className='ui hidden divider' />
           <h1 className='ui horizontal divider header'>Service Credits</h1>

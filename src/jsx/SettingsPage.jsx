@@ -33,19 +33,14 @@ var SettingsPage = React.createClass({
     ];
   },
 
-  getCerts: function() {
-    return [
-      { label: 'Pennsylvania EMT' },
-      { label: 'NREMT-B' },
-      { label: 'Professional Rescuer CPR' }
-    ];
-  },
-
   render: function() {
     return (
       <div className='ui two column grid'>
         <div className='column'>
-          <SettingsCerts certifications={this.getCerts()} />
+          <SettingsCerts
+            certifications={this.props.app.state.certificationTypes}
+            createCertificationType={this.props.app.createCertificationType}
+          />
         </div>
         <div className='column'>
           <SettingsRoles roles={this.getRoles()} />

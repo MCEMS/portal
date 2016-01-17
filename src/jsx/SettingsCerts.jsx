@@ -9,7 +9,7 @@ var SettingsCertRow = React.createClass({
     return (
       <tr>
         <td>
-          <div className='ui large label'>{this.props.label}</div>
+          <div className='ui large label'>{this.props.type}</div>
         </td>
         <td className='right aligned'>
           <button className='ui fluid basic button'><Icon icon='pencil' /> Edit</button>
@@ -24,6 +24,20 @@ var SettingsCerts = React.createClass({
     return {
       certifications: []
     };
+  },
+
+  getInitialState: function() {
+    return {
+      type: ''
+    };
+  },
+
+  handleTypeChange: function(event) {
+    this.setState({ type: event.target.value });
+  },
+
+  create: function() {
+    this.props.createCertificationType(this.state.type);
   },
 
   render: function() {
@@ -50,11 +64,11 @@ var SettingsCerts = React.createClass({
           <tr>
             <th>
               <div className='ui fluid input'>
-                <input type='text' placeholder='Type of certification' />
+                <input value={this.state.type} onChange={this.handleTypeChange} type='text' placeholder='Type of certification' />
               </div>
             </th>
             <th className='right aligned'>
-              <button className='ui fluid green button'><Icon icon='add' /> Save</button>
+              <button onClick={this.create} className='ui fluid green button'><Icon icon='add' /> Save</button>
             </th>
           </tr>
         </tfoot>

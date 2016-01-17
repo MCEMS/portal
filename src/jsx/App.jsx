@@ -61,9 +61,32 @@ var App = React.createClass({
       })
     });
   },
+  createCertificationType: function(name) {
+    var type = {
+      id: this.state.certificationTypes.length + 1,
+      type: name
+    };
+    this.setState({
+      certificationTypes: this.state.certificationTypes.concat([type])
+    });
+  },
   getInitialState: function() {
     return {
       page: 'profile',
+      certificationTypes: [
+        {
+          id: 1,
+          type: 'EMT'
+        },
+        {
+          id: 2,
+          type: 'NREMT-B'
+        },
+        {
+          id: 3,
+          type: 'Professional Rescuer CPR'
+        }
+      ],
       members: [
         {
           id: 1,
@@ -179,7 +202,7 @@ var App = React.createClass({
       'calendar': <CalendarPage />,
       'profile': <ProfilePage app={this} />,
       'members': <MembersPage />,
-      'settings': <SettingsPage />
+      'settings': <SettingsPage app={this} />
     };
 
     return mapping[this.state.page];
