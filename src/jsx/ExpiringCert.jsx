@@ -1,24 +1,23 @@
 var ExpiringCert = React.createClass({
   propTypes: {
     date: React.PropTypes.instanceOf(moment),
-    name: React.PropTypes.string
+    type: React.PropTypes.string
   },
   getDefaultProps: function() {
     return {
       date: moment(),
-      name: ''
+      type: ''
     };
   },
   getInitialState: function() {
     return {};
   },
   render: function() {
-    var dateString = this.props.date.fromNow();
     return (
       <div className='item'>
         <Icon icon='certificate' />
         <div className='content'>
-          <div className='header'>{this.props.name}</div>
+          <div className='header'>{this.props.type}</div>
           <div className='description'>
             <RelativeTime time={this.props.date} />
           </div>

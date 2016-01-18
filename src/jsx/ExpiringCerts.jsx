@@ -17,7 +17,7 @@ var ExpiringCerts = React.createClass({
   render: function() {
     var certsToRender = this.props.certifications.filter(this.shouldRenderCert);
     var certs = certsToRender.map(function(cert) {
-      return <ExpiringCert key={cert.id} name={cert.name} date={cert.expires} />;
+      return <ExpiringCert key={cert.id} type={cert.type} date={cert.expires} />;
     });
     var message = (certsToRender.length === 0)? 'Nothing on the horizon!' : '';
 
