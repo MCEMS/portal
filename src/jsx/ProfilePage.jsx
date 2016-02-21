@@ -17,15 +17,15 @@ var ProfilePage = React.createClass({
           <ApprovalQueue
             serviceCredits={this.props.app.state.serviceCredits}
             certifications={this.props.app.state.certifications}
-            serviceCreditApprovalHandler={this.props.app.props.dataSource.ServiceCredits.approve}
-            serviceCreditDeletionHandler={this.props.app.props.dataSource.ServiceCredits.destroy}
-            certificationApprovalHandler={this.props.app.props.dataSource.Certifications.approve}
-            certificationDeletionHandler={this.props.app.props.dataSource.Certifications.destroy}
+            serviceCreditApprovalHandler={this.props.app.props.dataSource.ServiceCredit.approve}
+            serviceCreditDeletionHandler={this.props.app.props.dataSource.ServiceCredit.destroy}
+            certificationApprovalHandler={this.props.app.props.dataSource.Certification.approve}
+            certificationDeletionHandler={this.props.app.props.dataSource.Certification.destroy}
           />
           <div className='ui hidden divider' />
           <h1 className='ui horizontal divider header'>Contact Details</h1>
           <p>Keep us up to date so we can achieve maximum synergy :)</p>
-          <MemberInfoEdit member={this.props.app.state.members[0]} />
+          <MemberInfoEdit member={this.props.app.state.people[0]} />
           <div className='ui hidden divider' />
           <h1 className='ui horizontal divider header'>Certifications</h1>
           <p>
@@ -36,13 +36,13 @@ var ProfilePage = React.createClass({
           <MemberCertifications
             certifications={this.props.app.state.certifications}
             types={this.props.app.state.certificationTypes}
-            addCert={this.props.app.props.dataSource.Certifications.create}
-            deleteCert={this.props.app.props.dataSource.Certifications.destroy}
+            addCert={this.props.app.props.dataSource.Certification.create}
+            deleteCert={this.props.app.props.dataSource.Certification.destroy}
           />
           <div className='ui hidden divider' />
           <h1 className='ui horizontal divider header'>Service Credits</h1>
           <p>These are your approved service credits from this semester. To get started, just enter a brief description of what you did and submit it for approval!</p>
-          <MemberServiceCredits handleNewCredit={this.props.app.props.dataSource.ServiceCredits.create} serviceCredits={this.props.app.state.serviceCredits} />
+          <MemberServiceCredits handleNewCredit={this.props.app.props.dataSource.ServiceCredit.create} serviceCredits={this.props.app.state.serviceCredits} />
         </div>
 
         <div className='four wide column'>

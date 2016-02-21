@@ -17,14 +17,14 @@ var SettingsPage = React.createClass({
         <div className='column'>
           <SettingsCerts
             certifications={this.props.app.state.certificationTypes}
-            createCertificationType={this.props.app.props.dataSource.CertificationTypes.create}
+            createCertificationType={this.props.app.props.dataSource.CertificationType.create}
           />
         </div>
         <div className='column'>
           <SettingsRoles
             roles={this.props.app.state.roles}
-            createRole={this.props.app.props.dataSource.Roles.create}
-            updateRole={this.props.app.props.dataSource.Roles.update}
+            createRole={this.props.app.props.dataSource.Role.create}
+            updateRole={this.props.app.props.dataSource.Role.update}
           />
         </div>
       </div>

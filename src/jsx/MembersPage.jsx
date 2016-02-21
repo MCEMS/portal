@@ -2,17 +2,40 @@ var MembersPage = React.createClass({
   propTypes: {
   },
   getDefaultProps: function() {
-    return {};
+    return {
+      app: null
+    };
   },
   getInitialState: function() {
     return {};
   },
   render: function() {
+    var people = this.props.app.state.people.map(function(person) {
+      return (
+        <tr key={person.id}>
+          <td>{person.firstName}</td>
+          <td>{person.lastName}</td>
+          <td>{person.phone}</td>
+          <td>{person.campusAddress}</td>
+          <td>{person.campusMailbox}</td>
+        </tr>
+      );
+    });
     return (
-      <div className="blankslate">
-        <h3>Not Implemented</h3>
-        <p>Still working on this one. Sorry about that!</p>
-      </div>
+      <table className='ui table'>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Campus Address</th>
+            <th>Campus Mailbox</th>
+          </tr>
+        </thead>
+        <tbody>
+          {people}
+        </tbody>
+      </table>
     );
   }
 });

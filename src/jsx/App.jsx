@@ -5,38 +5,39 @@ var App = React.createClass({
   },
   getInitialState: function() {
     return {
-      page: 'profile',
-      certificationTypes: this.props.dataSource.CertificationTypes.all(),
-      members: this.props.dataSource.Members.all(),
-      serviceCredits: this.props.dataSource.ServiceCredits.all(),
-      certifications: this.props.dataSource.Certifications.all(),
-      roles: this.props.dataSource.Roles.all()
+      page: 'members',
+      loggedIn: false,
+      certificationTypes: [],
+      people: [],
+      serviceCredits: [],
+      certifications: [],
+      roles: []
     };
   },
 
   componentDidMount: function() {
     var self = this;
-    this.props.dataSource.Roles.register(function(roles) {
+    this.props.dataSource.Role.register(function(roles) {
       self.setState({
         roles: roles
       });
     });
-    this.props.dataSource.CertificationTypes.register(function(types) {
+    this.props.dataSource.CertificationType.register(function(types) {
       self.setState({
         certificationTypes: types
       });
     });
-    this.props.dataSource.Members.register(function(membes) {
+    this.props.dataSource.Person.register(function(people) {
       self.setState({
-        members: members
+        people: people
       });
     });
-    this.props.dataSource.ServiceCredits.register(function(credits) {
+    this.props.dataSource.ServiceCredit.register(function(credits) {
       self.setState({
         serviceCredits: credits
       });
     });
-    this.props.dataSource.Certifications.register(function(certs) {
+    this.props.dataSource.Certification.register(function(certs) {
       self.setState({
         certifications: certs
       });
@@ -60,11 +61,15 @@ var App = React.createClass({
       'broadcast': <BroadcastPage />,
       'calendar': <CalendarPage />,
       'profile': <ProfilePage app={this} />,
-      'members': <MembersPage />,
+      'members': <MembersPage app={this} />,
       'settings': <SettingsPage app={this} />
     };
 
-    return mapping[this.state.page];
+    if (this.state.loggedIn) {
+      return mapping[this.state.page];
+    } else {
+      return <Login app={this} />;
+    }
   },
 
   render: function() {
@@ -115,12 +120,6 @@ var App = React.createClass({
         </nav>
         <div className='ui container'>
           {this.getCurrentComponent()}
-        </div>
-        <div className='ui hidden divider' />
-        <div className='ui container'>
-          <div className='ui message'>
-            <p className='center aligned'>Copyright &copy; Muhlenberg College EMS. All rights reserved.</p>
-          </div>
         </div>
         <div className='ui hidden divider' />
       </div>

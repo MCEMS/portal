@@ -61,6 +61,9 @@ gulp.task('compileJsx', function() {
     'src/jsx/ProfilePage.jsx',
     'src/jsx/SettingsPage.jsx',
 
+    // login
+    'src/jsx/Login.jsx',
+
     // global components
     'src/jsx/NavTab.jsx',
     'src/jsx/App.jsx',

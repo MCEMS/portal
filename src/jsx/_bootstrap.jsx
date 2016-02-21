@@ -1,5 +1,5 @@
 ReactDOM.render(
-  <App dataSource={window.StubDataProvider} />,
+  <App dataSource={window.RestDataProvider} />,
   document.getElementById('app')
 );
 
