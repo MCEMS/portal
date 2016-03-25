@@ -1,4 +1,6 @@
-const React = require('react');
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+
 const ApprovalQueue = require('./ApprovalQueue');
 const MemberInfoEdit = require('./MemberInfoEdit');
 const MemberCertifications = require('./MemberCertifications');
@@ -8,21 +10,14 @@ const ExpiringCerts = require('./ExpiringCerts');
 const MemberHistory = require('./MemberHistory');
 const Icon = require('./Icon');
 
-const ProfilePage = (props) => (
+const Profile = (props) => (
   <div className="ui stackable grid">
     <div className="twelve wide column">
-      <ApprovalQueue
-        serviceCredits={props.app.state.serviceCredits}
-        certifications={props.app.state.certifications}
-        serviceCreditApprovalHandler={props.app.props.dataSource.ServiceCredit.approve}
-        serviceCreditDeletionHandler={props.app.props.dataSource.ServiceCredit.destroy}
-        certificationApprovalHandler={props.app.props.dataSource.Certification.approve}
-        certificationDeletionHandler={props.app.props.dataSource.Certification.destroy}
-      />
+      <ApprovalQueue />
       <div className="ui hidden divider" />
       <h1 className="ui horizontal divider header">Contact Details</h1>
       <p>Keep us up to date so we can achieve maximum synergy :)</p>
-      <MemberInfoEdit member={props.app.state.people[0]} />
+      <MemberInfoEdit personId={props.personId} />
       <div className="ui hidden divider" />
       <h1 className="ui horizontal divider header">Certifications</h1>
       <p>
@@ -34,12 +29,7 @@ const ProfilePage = (props) => (
         certification to appear here, as it will need to be verified by an
         admin.
       </p>
-      <MemberCertifications
-        certifications={props.app.state.certifications}
-        types={props.app.state.certificationTypes}
-        addCert={props.app.props.dataSource.Certification.create}
-        deleteCert={props.app.props.dataSource.Certification.destroy}
-      />
+      <MemberCertifications personId={props.personId} />
       <div className="ui hidden divider" />
       <h1 className="ui horizontal divider header">Service Credits</h1>
       <p>
@@ -47,21 +37,18 @@ const ProfilePage = (props) => (
         started, just enter a brief description of what you did and submit it
         for approval!
       </p>
-      <MemberServiceCredits
-        handleNewCredit={props.app.props.dataSource.ServiceCredit.create}
-        serviceCredits={props.app.state.serviceCredits}
-      />
+      <MemberServiceCredits personId={props.personId} />
     </div>
 
     <div className="four wide column">
       <div className="ui horizontal divider">Upcoming Shifts</div>
-      <UpcomingShifts />
+      <UpcomingShifts personId={props.personId} />
       <div className="ui hidden divider"></div>
       <div className="ui horizontal divider">Expiring Certs</div>
-      <ExpiringCerts certifications={props.app.state.certifications} />
+      <ExpiringCerts personId={props.personId} />
       <div className="ui hidden divider"></div>
       <div className="ui horizontal divider">My Roles</div>
-      <MemberHistory />
+      <MemberHistory personId={props.personId} />
       <div className="ui hidden divider"></div>
       <div className="ui horizontal divider">Duty Hours</div>
       <div>
@@ -81,7 +68,7 @@ const ProfilePage = (props) => (
         </div>
       </div>
       <div className="ui hidden divider"></div>
-      <div className="ui horizontal divider">bctions</div>
+      <div className="ui horizontal divider">Actions</div>
       <div>
         <div className="ui small fluid button">
           <Icon icon="emergency" /> Request driver training
@@ -96,8 +83,13 @@ const ProfilePage = (props) => (
     </div>
   </div>
 );
-ProfilePage.propTypes = {
-  app: React.PropTypes.func,
+Profile.propTypes = {
+  personId: PropTypes.number.isRequired,
 };
 
-module.exports = ProfilePage;
+const mapStateToProps = () => ({
+  personId: -1,
+});
+
+const ProfilePage = connect(mapStateToProps)(Profile);
+export default ProfilePage;

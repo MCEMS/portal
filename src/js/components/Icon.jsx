@@ -5,7 +5,7 @@ const Icon = (props) => {
   return <i className={className} />;
 };
 Icon.propTypes = {
-  icon: React.PropTypes.string.required,
+  icon: React.PropTypes.string.isRequired,
   color: React.PropTypes.string,
 };
 Icon.defaultProps = {
