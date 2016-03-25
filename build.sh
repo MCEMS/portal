@@ -3,10 +3,10 @@
 GH_REPO="@github.com/MCEMS/portal.git"
 FULL_REPO="https://$GH_TOKEN$GH_REPO"
 
-npm install -g gulp
-npm install -g bower
-bower install
-gulp build
+npm install -g webpack
+npm install -g eslint
+npm install
+npm build
 
 cd dist
 git init
