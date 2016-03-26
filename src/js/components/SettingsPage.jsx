@@ -1,6 +1,6 @@
-const React = require('react');
-const SettingsCerts = require('./SettingsCerts');
-const SettingsRoles = require('./SettingsRoles');
+import React, { PropTypes } from 'react';
+import SettingsCerts from './SettingsCerts';
+import SettingsRoles from './SettingsRoles';
 
 const SettingsPage = (props) => (
   <div className="ui two column grid">
@@ -20,7 +20,7 @@ const SettingsPage = (props) => (
   </div>
 );
 SettingsPage.propTypes = {
-  app: React.PropTypes.func,
+  app: PropTypes.func,
 };
 
-module.exports = SettingsPage;
+export default SettingsPage;

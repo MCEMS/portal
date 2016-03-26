@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Icon from './Icon';
 
 const NavTab = (props) => {
@@ -16,10 +16,10 @@ const NavTab = (props) => {
   );
 };
 NavTab.propTypes = {
-  icon: React.PropTypes.string,
-  text: React.PropTypes.string,
-  active: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
+  icon: PropTypes.string,
+  text: PropTypes.string,
+  active: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 NavTab.defaultProps = {
   icon: '',

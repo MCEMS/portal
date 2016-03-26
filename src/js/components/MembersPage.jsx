@@ -1,4 +1,4 @@
-const React = require('react');
+import React, { PropTypes } from 'react';
 
 const MembersPage = (props) => {
   const people = props.app.state.people.map((person) => (
@@ -28,7 +28,7 @@ const MembersPage = (props) => {
   );
 };
 MembersPage.propTypes = {
-  app: React.PropTypes.func,
+  app: PropTypes.func,
 };
 
-module.exports = MembersPage;
+export default MembersPage;

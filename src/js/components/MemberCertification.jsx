@@ -1,6 +1,6 @@
-const React = require('react');
-const moment = require('moment');
-const Icon = require('./Icon');
+import React, { PropTypes } from 'react';
+import moment from 'moment';
+import Icon from './Icon';
 
 const MemberCertification = (props) => {
   const dateFormat = 'MMMM Do, YYYY';
@@ -24,12 +24,12 @@ const MemberCertification = (props) => {
   );
 };
 MemberCertification.propTypes = {
-  id: React.PropTypes.number,
-  type: React.PropTypes.string,
-  number: React.PropTypes.string,
-  issued: React.PropTypes.instanceOf(moment),
-  expires: React.PropTypes.instanceOf(moment),
-  deleteCert: React.PropTypes.func,
+  id: PropTypes.number,
+  type: PropTypes.string,
+  number: PropTypes.string,
+  issued: PropTypes.instanceOf(moment),
+  expires: PropTypes.instanceOf(moment),
+  deleteCert: PropTypes.func,
 };
 MemberCertification.defaultProps = {
   id: 0,

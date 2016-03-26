@@ -1,6 +1,6 @@
-const React = require('react');
-const SettingsCertRow = require('./SettingsCertRow');
-const Icon = require('./Icon');
+import React, { PropTypes } from 'react';
+import SettingsCertRow from './SettingsCertRow';
+import Icon from './Icon';
 
 class SettingsCerts extends React.Component {
   constructor(props) {
@@ -65,12 +65,12 @@ class SettingsCerts extends React.Component {
   }
 }
 SettingsCerts.propTypes = {
-  certifications: React.PropTypes.array,
-  createCertificationType: React.PropTypes.func,
+  certifications: PropTypes.array,
+  createCertificationType: PropTypes.func,
 };
 SettingsCerts.defaultProps = {
   certifications: [],
   createCertificationType: () => {},
 };
 
-module.exports = SettingsCerts;
+export default SettingsCerts;

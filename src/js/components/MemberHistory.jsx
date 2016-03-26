@@ -1,28 +1,28 @@
 import React from 'react';
-import Moment from 'moment';
+import moment from 'moment';
 import MemberHistoryItem from './MemberHistoryItem';
 
 const MemberHistory = () => (
   <div className="ui relaxed list">
     <MemberHistoryItem
       role="Driver"
-      from={Moment()}
-      to={Moment()}
+      from={moment()}
+      to={moment()}
     />
     <MemberHistoryItem
       role="Driver Trainee"
-      from={Moment()}
-      to={Moment()}
+      from={moment()}
+      to={moment()}
     />
     <MemberHistoryItem
       role="General Member"
-      from={Moment()}
-      to={Moment()}
+      from={moment()}
+      to={moment()}
     />
     <MemberHistoryItem
       role="Probationary Member"
-      from={Moment()}
-      to={Moment()}
+      from={moment()}
+      to={moment()}
     />
   </div>
 );

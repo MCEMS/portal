@@ -1,4 +1,4 @@
-const React = require('react');
+import React, { PropTypes } from 'react';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class Modal extends React.Component {
   }
 }
 Modal.propTypes = {
-  children: React.PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
-module.exports = Modal;
+export default Modal;

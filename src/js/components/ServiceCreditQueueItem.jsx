@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Moment from 'moment';
+import moment from 'moment';
 import QueueItem from './QueueItem';
 
 const ServiceCreditQueueItem = (props) => {
@@ -15,7 +15,7 @@ const ServiceCreditQueueItem = (props) => {
 };
 ServiceCreditQueueItem.propTypes = {
   id: PropTypes.number,
-  requestedAt: PropTypes.instanceOf(Moment),
+  requestedAt: PropTypes.instanceOf(moment),
   approve: PropTypes.func,
   reject: PropTypes.func,
   name: PropTypes.string,
@@ -23,7 +23,7 @@ ServiceCreditQueueItem.propTypes = {
 };
 ServiceCreditQueueItem.defaultProps = {
   id: 0,
-  requestedAt: Moment(),
+  requestedAt: moment(),
   approve: () => {},
   reject: () => {},
   name: '',

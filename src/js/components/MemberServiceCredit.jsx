@@ -1,6 +1,6 @@
-const React = require('react');
-const Icon = require('./Icon');
-const moment = require('moment');
+import React, { PropTypes } from 'react';
+import moment from 'moment';
+import Icon from './Icon';
 
 const MemberServiceCredit = (props) => {
   let extra = <div className="extra">Pending approval</div>;
@@ -15,18 +15,18 @@ const MemberServiceCredit = (props) => {
     <div className="ui card">
       <div className="content">
         <div className="header">
-          {this.props.performedAt.format('MMMM Do, YYYY')}
+          {props.performedAt.format('MMMM Do, YYYY')}
         </div>
-        <div className="description">{this.props.description}</div>
+        <div className="description">{props.description}</div>
       </div>
       {extra}
     </div>
   );
 };
 MemberServiceCredit.propTypes = {
-  approver: React.PropTypes.string,
-  performedAt: React.PropTypes.instanceOf(moment),
-  description: React.PropTypes.string,
+  approver: PropTypes.string,
+  performedAt: PropTypes.instanceOf(moment),
+  description: PropTypes.string,
 };
 MemberServiceCredit.defaultProps = {
   approver: '',

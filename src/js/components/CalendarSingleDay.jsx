@@ -1,5 +1,5 @@
 import React from 'react';
-import Moment from 'moment';
+import moment from 'moment';
 import CalendarShift from './CalendarShift';
 
 const CalendarSingleDay = () => {
@@ -76,4 +76,4 @@ const CalendarSingleDay = () => {
   );
 };
 
-module.exports = CalendarSingleDay;
+export default CalendarSingleDay;

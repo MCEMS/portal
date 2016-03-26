@@ -1,5 +1,5 @@
-import React from 'react';
-import Moment from 'moment';
+import React, { PropTypes } from 'react';
+import moment from 'moment';
 import RelativeTime from './RelativeTime';
 import Icon from './Icon';
 
@@ -48,17 +48,17 @@ class QueueItem extends React.Component {
   }
 }
 QueueItem.propTypes = {
-  id: React.PropTypes.number,
-  requestedAt: React.PropTypes.instanceOf(Moment),
-  summary: React.PropTypes.node,
-  body: React.PropTypes.node,
-  icon: React.PropTypes.string,
-  approve: React.PropTypes.func,
-  reject: React.PropTypes.func,
+  id: PropTypes.number,
+  requestedAt: PropTypes.instanceOf(moment),
+  summary: PropTypes.node,
+  body: PropTypes.node,
+  icon: PropTypes.string,
+  approve: PropTypes.func,
+  reject: PropTypes.func,
 };
 QueueItem.defaultProps = {
   id: 0,
-  requestedAt: Moment(),
+  requestedAt: moment(),
   summary: <div>Something happened!</div>,
   body: <div />,
   icon: '',

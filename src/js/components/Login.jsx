@@ -1,4 +1,4 @@
-const React = require('react');
+import React, { PropTypes } from 'react';
 
 class Login extends React.Component {
   constructor(props) {
@@ -106,10 +106,10 @@ class Login extends React.Component {
   }
 }
 Login.propTypes = {
-  app: React.PropTypes.func,
+  app: PropTypes.func,
 };
 Login.defaultProps = {
   app: null,
 };
 
-module.exports = Login;
+export default Login;

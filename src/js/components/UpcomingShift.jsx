@@ -1,5 +1,5 @@
-import Moment from 'moment';
-import React from 'react';
+import React, { PropTypes } from 'react';
+import moment from 'moment';
 import Icon from './Icon';
 
 const UpcomingShift = (props) => (
@@ -17,9 +17,13 @@ const UpcomingShift = (props) => (
     </div>
   </div>
 );
+UpcomingShift.propTypes = {
+  start: PropTypes.instanceOf(moment),
+  end: PropTypes.instanceOf(moment),
+};
 UpcomingShift.defaultProps = {
-    start: Moment(),
-    end: Moment(),
+  start: moment(),
+  end: moment(),
 };
 
 export default UpcomingShift;

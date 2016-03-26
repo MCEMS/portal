@@ -1,5 +1,5 @@
-const React = require('react');
-const Icon = require('./Icon');
+import React, { PropTypes } from 'react';
+import Icon from './Icon';
 
 class SettingsRoleRow extends React.Component {
   constructor(props) {
@@ -39,10 +39,10 @@ class SettingsRoleRow extends React.Component {
   }
 }
 SettingsRoleRow.propTypes = {
-  id: React.PropTypes.number,
-  role: React.PropTypes.string,
-  showOnSchedule: React.PropTypes.bool,
-  updateRole: React.PropTypes.func,
+  id: PropTypes.number,
+  role: PropTypes.string,
+  showOnSchedule: PropTypes.bool,
+  updateRole: PropTypes.func,
 };
 SettingsRoleRow.defaultProps = {
   id: 0,
@@ -52,4 +52,4 @@ SettingsRoleRow.defaultProps = {
   updateRole: () => {},
 };
 
-module.exports = SettingsRoleRow;
+export default SettingsRoleRow;

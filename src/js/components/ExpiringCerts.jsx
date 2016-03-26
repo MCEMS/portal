@@ -1,9 +1,9 @@
 import React from 'react';
-import Moment from 'moment';
+import moment from 'moment';
 import ExpiringCert from './ExpiringCert';
 
 const shouldRenderCert = (cert) => {
-  const cutoff = Moment().add(3, 'months');
+  const cutoff = moment().add(3, 'months');
   return cert.expires.isBefore(cutoff);
 };
 

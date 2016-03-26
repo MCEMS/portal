@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Moment from 'moment';
+import moment from 'moment';
 import QueueItem from './QueueItem';
 
 const CertificationQueueItem = (props) => {
@@ -16,23 +16,23 @@ const CertificationQueueItem = (props) => {
 };
 CertificationQueueItem.propTypes = {
   id: PropTypes.number,
-  requestedAt: PropTypes.instanceOf(Moment),
+  requestedAt: PropTypes.instanceOf(moment),
   approve: PropTypes.func,
   reject: PropTypes.func,
   name: PropTypes.string,
   type: PropTypes.string,
   number: PropTypes.string,
-  expires: PropTypes.instanceOf(Moment),
+  expires: PropTypes.instanceOf(moment),
 };
 CertificationQueueItem.defaultProps = {
   id: 0,
-  requestedAt: Moment(),
+  requestedAt: moment(),
   approve: () => {},
   reject: () => {},
   name: '',
   type: '',
   number: '',
-  expires: Moment(),
+  expires: moment(),
 };
 
 export default CertificationQueueItem;

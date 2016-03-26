@@ -1,5 +1,5 @@
-const React = require('react');
-const Icon = require('./Icon');
+import React, { PropTypes } from 'react';
+import Icon from './Icon';
 
 const SettingsCertRow = (props) => (
   <tr>
@@ -14,7 +14,7 @@ const SettingsCertRow = (props) => (
   </tr>
 );
 SettingsCertRow.propTypes = {
-  type: React.PropTypes.string,
+  type: PropTypes.string,
 };
 
-module.exports = SettingsCertRow;
+export default SettingsCertRow;

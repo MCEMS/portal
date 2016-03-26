@@ -1,5 +1,5 @@
-const React = require('react');
-const moment = require('moment');
+import React, { PropTypes } from 'react';
+import moment from 'moment';
 
 const MemberHistoryItem = (props) => (
   <div className="item">
@@ -12,9 +12,9 @@ const MemberHistoryItem = (props) => (
   </div>
 );
 MemberHistoryItem.propTypes = {
-  role: React.PropTypes.string,
-  from: React.PropTypes.instanceOf(moment),
-  to: React.PropTypes.instanceOf(moment),
+  role: PropTypes.string,
+  from: PropTypes.instanceOf(moment),
+  to: PropTypes.instanceOf(moment),
 };
 MemberHistoryItem.defaultProps = {
   role: '',
@@ -22,4 +22,4 @@ MemberHistoryItem.defaultProps = {
   to: moment(),
 };
 
-module.exports = MemberHistoryItem;
+export default MemberHistoryItem;

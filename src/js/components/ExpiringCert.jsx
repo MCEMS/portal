@@ -1,7 +1,7 @@
-const React = require('react');
-const Icon = require('./Icon');
-const RelativeTime = require('./RelativeTime');
-const moment = require('moment');
+import React, { PropTypes } from 'react';
+import moment from 'moment';
+import RelativeTime from './RelativeTime';
+import Icon from './Icon';
 
 const ExpiringCert = (props) => (
   <div className="item">
@@ -17,12 +17,12 @@ const ExpiringCert = (props) => (
   </div>
 );
 ExpiringCert.propTypes = {
-  date: React.PropTypes.instanceOf(moment),
-  name: React.PropTypes.string,
+  date: PropTypes.instanceOf(moment),
+  name: PropTypes.string,
 };
 ExpiringCert.defaultProps = {
   date: moment(),
   name: '',
 };
 
-module.exports = ExpiringCert;
+export default ExpiringCert;
