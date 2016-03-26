@@ -1,10 +1,10 @@
-const React = require('react');
-const moment = require('moment');
+import React from 'react';
+import Moment from 'moment';
 
 const CalendarShift = (props) => {
   const today = props.renderForDate.startOf('day');
-  const offset = moment.duration(props.start.diff(today)).as('hours');
-  const length = moment.duration(props.end.diff(today)).as('hours');
+  const offset = Moment.duration(props.start.diff(today)).as('hours');
+  const length = Moment.duration(props.end.diff(today)).as('hours');
   let className = 'shift';
   className += ` offset-${offset}`;
   className += ` length-${length}`;
@@ -17,13 +17,13 @@ const CalendarShift = (props) => {
   );
 };
 CalendarShift.propTypes = {
-  renderForDate: React.PropTypes.instanceOf(moment).required,
-  start: React.PropTypes.instanceOf(moment).required,
-  end: React.PropTypes.instanceOf(moment).required,
-  me: React.PropTypes.bool.required,
-  name: React.PropTypes.string.required,
-  unit: React.PropTypes.string.required,
-  role: React.PropTypes.string.required,
+  renderForDate: PropTypes.instanceOf(Moment).required,
+  start: PropTypes.instanceOf(Moment).required,
+  end: PropTypes.instanceOf(Moment).required,
+  me: PropTypes.bool.required,
+  name: PropTypes.string.required,
+  unit: PropTypes.string.required,
+  role: PropTypes.string.required,
 };
 
-module.exports = CalendarShift;
+export default CalendarShift;

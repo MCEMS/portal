@@ -40,4 +40,4 @@ MemberCertification.defaultProps = {
   deleteCert: () => {},
 };
 
-module.exports = MemberCertification;
+export default MemberCertification;

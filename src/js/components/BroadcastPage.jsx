@@ -1,7 +1,7 @@
-const React = require('react');
-const Icon = require('./Icon');
+import React from 'react';
+import Icon from './Icon';
 
-module.exports = () => (
+const BroadcastPage = () => (
   <div>
     <h1>Broadcast a short message to all active members</h1>
     <div className="ui fluid action input">
@@ -23,3 +23,5 @@ module.exports = () => (
     </div>
   </div>
 );
+
+export default BroadcastPage;

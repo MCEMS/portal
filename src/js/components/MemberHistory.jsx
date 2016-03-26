@@ -1,30 +1,30 @@
-const React = require('react');
-const moment = require('moment');
-const MemberHistoryItem = require('./MemberHistoryItem');
+import React from 'react';
+import Moment from 'moment';
+import MemberHistoryItem from './MemberHistoryItem';
 
 const MemberHistory = () => (
   <div className="ui relaxed list">
     <MemberHistoryItem
       role="Driver"
-      from={moment()}
-      to={moment()}
+      from={Moment()}
+      to={Moment()}
     />
     <MemberHistoryItem
       role="Driver Trainee"
-      from={moment()}
-      to={moment()}
+      from={Moment()}
+      to={Moment()}
     />
     <MemberHistoryItem
       role="General Member"
-      from={moment()}
-      to={moment()}
+      from={Moment()}
+      to={Moment()}
     />
     <MemberHistoryItem
       role="Probationary Member"
-      from={moment()}
-      to={moment()}
+      from={Moment()}
+      to={Moment()}
     />
   </div>
 );
 
-module.exports = MemberHistory;
+export default MemberHistory;

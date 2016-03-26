@@ -1,9 +1,9 @@
-const React = require('react');
-const ExpiringCert = require('./ExpiringCert');
-const moment = require('moment');
+import React from 'react';
+import Moment from 'moment';
+import ExpiringCert from './ExpiringCert';
 
 const shouldRenderCert = (cert) => {
-  const cutoff = moment().add(3, 'months');
+  const cutoff = Moment().add(3, 'months');
   return cert.expires.isBefore(cutoff);
 };
 
@@ -26,3 +26,5 @@ ExpiringCerts.propTypes = {
 ExpiringCerts.defaultProps = {
   certifications: [],
 };
+
+export default ExpiringCerts;

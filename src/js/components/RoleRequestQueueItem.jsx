@@ -1,5 +1,5 @@
-const React = require('react');
-const QueueItem = require('./QueueItem');
+import React, { PropTypes } from 'react';
+import QueueItem from './QueueItem';
 
 const RoleRequestQueueItem = (props) => {
   const summary = `${props.name} requested the role ${props.role}`;
@@ -12,12 +12,12 @@ const RoleRequestQueueItem = (props) => {
   );
 };
 RoleRequestQueueItem.propTypes = {
-  name: React.PropTypes.string,
-  role: React.PropTypes.string,
+  name: PropTypes.string,
+  role: PropTypes.string,
 };
 RoleRequestQueueItem.defaultProps = {
   name: '',
   role: '',
 };
 
-module.exports = RoleRequestQueueItem;
+export default RoleRequestQueueItem;

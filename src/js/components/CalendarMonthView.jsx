@@ -1,4 +1,4 @@
-const React = require('react');
+import React, { PropTypes } from 'react';
 
 const CalendarMonthView = (props) => (
   <div className="mini-calendar">
@@ -50,7 +50,7 @@ const CalendarMonthView = (props) => (
   </div>
 );
 CalendarMonthView.propTypes = {
-  month: React.PropTypes.string.required,
+  month: PropTypes.string.required,
 };
 
-module.exports = CalendarMonthView;
+export default CalendarMonthView;

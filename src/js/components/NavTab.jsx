@@ -1,5 +1,5 @@
-const React = require('react');
-const Icon = require('./Icon');
+import React from 'react';
+import Icon from './Icon';
 
 const NavTab = (props) => {
   let className = 'item';
@@ -28,4 +28,4 @@ NavTab.defaultProps = {
   onClick: () => {},
 };
 
-module.exports = NavTab;
+export default NavTab;

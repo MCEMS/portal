@@ -1,7 +1,7 @@
-const React = require('react');
-const ServiceCreditQueueItem = require('./ServiceCreditQueueItem');
-const CertificationQueueItem = require('./CertificationQueueItem');
-const RoleRequestQueueItem = require('./RoleRequestQueueItem');
+import React, { PropTypes } from 'react';
+import ServiceCreditQueueItem from './ServiceCreditQueueItem';
+import CertificationQueueItem from './CertificationQueueItem';
+import RoleRequestQueueItem from './RoleRequestQueueItem';
 
 const ApprovalQueue = (props) => {
   const serviceCreditRequests = props.serviceCredits.filter((credit) => (
@@ -36,12 +36,12 @@ const ApprovalQueue = (props) => {
   );
 };
 ApprovalQueue.propTypes = {
-  serviceCredits: React.PropTypes.array,
-  serviceCreditApprovalHandler: React.PropTypes.func,
-  serviceCreditDeletionHandler: React.PropTypes.func,
-  certifications: React.PropTypes.array,
-  certificationApprovalHandler: React.PropTypes.func,
-  certificationDeletionHandler: React.PropTypes.func,
+  serviceCredits: PropTypes.array,
+  serviceCreditApprovalHandler: PropTypes.func,
+  serviceCreditDeletionHandler: PropTypes.func,
+  certifications: PropTypes.array,
+  certificationApprovalHandler: PropTypes.func,
+  certificationDeletionHandler: PropTypes.func,
 };
 ApprovalQueue.defaultProps = {
   serviceCredits: [],
@@ -52,4 +52,4 @@ ApprovalQueue.defaultProps = {
   certificationDeletionHandler: () => {},
 };
 
-module.exports = ApprovalQueue;
+export default ApprovalQueue;

@@ -1,5 +1,5 @@
-const React = require('react');
-const MemberServiceCredit = require('./MemberServiceCredit');
+import React, { PropTypes } from 'react';
+import MemberServiceCredit from './MemberServiceCredit';
 
 class MemberServiceCredits extends React.Component {
   constructor(props) {
@@ -66,11 +66,11 @@ class MemberServiceCredits extends React.Component {
   }
 }
 MemberServiceCredits.propTypes = {
-  serviceCredits: React.PropTypes.array,
-  handleNewCredit: React.PropTypes.func,
+  serviceCredits: PropTypes.array,
+  handleNewCredit: PropTypes.func,
 };
 MemberServiceCredits.defaultProps = {
   serviceCredits: [],
 };
 
-module.exports = MemberServiceCredits;
+export default MemberServiceCredits;

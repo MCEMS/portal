@@ -2,13 +2,13 @@ import React, { PropTypes } from 'react';
 import { setPage } from '../actions';
 import { connect } from 'react-redux';
 
-const NavTab = require('./NavTab');
-const BroadcastPage = require('./BroadcastPage');
-const CalendarPage = require('./CalendarPage');
-const SettingsPage = require('./SettingsPage');
-const ProfilePage = require('./ProfilePage');
-const MembersPage = require('./MembersPage');
-const Login = require('./Login');
+import ProfilePage from './ProfilePage';
+import NavTab from './NavTab';
+import BroadcastPage from './BroadcastPage';
+import CalendarPage from './CalendarPage';
+import SettingsPage from './SettingsPage';
+import MembersPage from './MembersPage';
+import Login from './Login';
 
 const getCurrentComponent = (page) => {
   const mapping = {

@@ -1,5 +1,5 @@
-const React = require('react');
-const moment = require('moment');
+import React from 'react';
+import Moment from 'moment';
 
 class RelativeTime extends React.Component {
   componentDidMount() {
@@ -24,10 +24,10 @@ class RelativeTime extends React.Component {
   }
 }
 RelativeTime.propTypes = {
-  time: React.PropTypes.instanceOf(moment),
+  time: React.PropTypes.instanceOf(Moment),
 };
 RelativeTime.defaultProps = {
-  time: moment(),
+  time: Moment(),
 };
 
-module.exports = RelativeTime;
+export default RelativeTime;

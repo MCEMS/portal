@@ -1,7 +1,7 @@
-const React = require('react');
-const RelativeTime = require('./RelativeTime');
-const moment = require('moment');
-const Icon = require('./Icon');
+import React from 'react';
+import Moment from 'moment';
+import RelativeTime from './RelativeTime';
+import Icon from './Icon';
 
 class QueueItem extends React.Component {
   approve() {
@@ -49,7 +49,7 @@ class QueueItem extends React.Component {
 }
 QueueItem.propTypes = {
   id: React.PropTypes.number,
-  requestedAt: React.PropTypes.instanceOf(moment),
+  requestedAt: React.PropTypes.instanceOf(Moment),
   summary: React.PropTypes.node,
   body: React.PropTypes.node,
   icon: React.PropTypes.string,
@@ -58,11 +58,11 @@ QueueItem.propTypes = {
 };
 QueueItem.defaultProps = {
   id: 0,
-  requestedAt: moment(),
+  requestedAt: Moment(),
   summary: <div>Something happened!</div>,
   body: <div />,
   icon: '',
   approve: () => {},
 };
 
-module.exports = QueueItem;
+export default QueueItem;

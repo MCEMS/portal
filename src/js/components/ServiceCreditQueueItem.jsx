@@ -1,6 +1,6 @@
-const React = require('react');
-const QueueItem = require('./QueueItem');
-const moment = require('moment');
+import React, { PropTypes } from 'react';
+import Moment from 'moment';
+import QueueItem from './QueueItem';
 
 const ServiceCreditQueueItem = (props) => {
   const summary = '#{props.name} requested a service credit';
@@ -14,20 +14,20 @@ const ServiceCreditQueueItem = (props) => {
   );
 };
 ServiceCreditQueueItem.propTypes = {
-  id: React.PropTypes.number,
-  requestedAt: React.PropTypes.instanceOf(moment),
-  approve: React.PropTypes.func,
-  reject: React.PropTypes.func,
-  name: React.PropTypes.string,
-  description: React.PropTypes.string,
+  id: PropTypes.number,
+  requestedAt: PropTypes.instanceOf(Moment),
+  approve: PropTypes.func,
+  reject: PropTypes.func,
+  name: PropTypes.string,
+  description: PropTypes.string,
 };
 ServiceCreditQueueItem.defaultProps = {
   id: 0,
-  requestedAt: moment(),
+  requestedAt: Moment(),
   approve: () => {},
   reject: () => {},
   name: '',
   description: '',
 };
 
-module.exports = ServiceCreditQueueItem;
+export default ServiceCreditQueueItem;

@@ -1,7 +1,7 @@
-const React = require('react');
-const CalendarMonthView = require('./CalendarMonthView');
-const CalendarSingleDay = require('./CalendarSingleDay');
-const Icon = require('./Icon');
+import React from 'react';
+import CalendarMonthView from './CalendarMonthView';
+import CalendarSingleDay from './CalendarSingleDay';
+import Icon from './Icon';
 
 const CalendarPage = () => (
   <div className="CalendarPage">
@@ -24,4 +24,4 @@ const CalendarPage = () => (
   </div>
 );
 
-module.exports = CalendarPage;
+export default CalendarPage;

@@ -1,18 +1,25 @@
-const React = require('react');
-const Icon = require('./Icon');
+import Moment from 'moment';
+import React from 'react';
+import Icon from './Icon';
 
-module.exports = () => (
+const UpcomingShift = (props) => (
   <div className="item">
     <Icon icon="calendar outline" />
     <div className="content">
-      <div className="header">{this.props.start.format('MMMM Do')}</div>
+      <div className="header">{props.start.format('MMMM Do')}</div>
       <div>
-        {this.props.start.format('HH:mm')}
+        {props.start.format('HH:mm')}
         {" to "}
-        {this.props.end.format('HH:mm')}
+        {props.end.format('HH:mm')}
         {" on "}
-        {this.props.end.format('MMMM Do')}
+        {props.end.format('MMMM Do')}
       </div>
     </div>
   </div>
 );
+UpcomingShift.defaultProps = {
+    start: Moment(),
+    end: Moment(),
+};
+
+export default UpcomingShift;

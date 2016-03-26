@@ -1,6 +1,6 @@
-const React = require('react');
-const CalendarShift = require('./CalendarShift');
-const moment = require('moment');
+import React from 'react';
+import Moment from 'moment';
+import CalendarShift from './CalendarShift';
 
 const CalendarSingleDay = () => {
   let shifts = [

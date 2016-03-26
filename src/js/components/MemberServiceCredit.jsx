@@ -34,4 +34,4 @@ MemberServiceCredit.defaultProps = {
   description: '',
 };
 
-module.exports = MemberServiceCredit;
+export default MemberServiceCredit;

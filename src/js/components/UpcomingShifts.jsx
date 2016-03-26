@@ -1,16 +1,18 @@
-const React = require('react');
-const UpcomingShift = require('./UpcomingShift');
-const moment = require('moment');
+import React from 'react';
+import Moment from 'moment';
+import UpcomingShift from './UpcomingShift';
 
-module.exports = () => (
+const UpcomingShifts = () => (
   <div className="ui relaxed list">
     <UpcomingShift
-      start={moment([2016, 0, 12])}
-      end={moment([2016, 0, 13])}
+      start={Moment([2016, 0, 12])}
+      end={Moment([2016, 0, 13])}
     />
     <UpcomingShift
-      start={moment([2016, 0, 22])}
-      end={moment([2016, 0, 23])}
+      start={Moment([2016, 0, 22])}
+      end={Moment([2016, 0, 23])}
     />
   </div>
 );
+
+export default UpcomingShifts;

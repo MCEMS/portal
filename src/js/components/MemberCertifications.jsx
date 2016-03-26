@@ -1,12 +1,12 @@
-const React = require('react');
-const Icon = require('./Icon');
-const MemberCertification = require('./MemberCertification');
+import React, { PropTypes } from 'react';
+import Icon from './Icon';
+import MemberCertification from './MemberCertification';
 
 class MemberCertifications extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: props.types[0].type,
+      type: '',
       number: '',
       issued: '',
       expires: '',
@@ -121,10 +121,10 @@ class MemberCertifications extends React.Component {
   }
 }
 MemberCertifications.propTypes = {
-  types: React.PropTypes.array,
-  certifications: React.PropTypes.array,
-  addCert: React.PropTypes.func,
-  deleteCert: React.PropTypes.func,
+  types: PropTypes.array,
+  certifications: PropTypes.array,
+  addCert: PropTypes.func,
+  deleteCert: PropTypes.func,
 };
 MemberCertifications.defaultProps = {
   types: [],
@@ -133,4 +133,4 @@ MemberCertifications.defaultProps = {
   deleteCert: () => {},
 };
 
-module.exports = MemberCertifications;
+export default MemberCertifications;

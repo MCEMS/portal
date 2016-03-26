@@ -1,4 +1,4 @@
-const React = require('react');
+import React, { PropTypes } from 'react';
 
 const MemberInfoEdit = (props) => (
   <form className="ui large form fluid">
@@ -59,17 +59,17 @@ const MemberInfoEdit = (props) => (
   </form>
 );
 MemberInfoEdit.propTypes = {
-  member: React.PropTypes.shape({
-    first_name: React.PropTypes.string,
-    last_name: React.PropTypes.string,
-    phone: React.PropTypes.string,
-    email: React.PropTypes.string,
-    campus_address: React.PropTypes.string,
-    class_year: React.PropTypes.string,
-    campus_mailbox: React.PropTypes.string,
-    home_address: React.PropTypes.string,
-    home_city: React.PropTypes.string,
-    home_zip: React.PropTypes.string,
+  member: PropTypes.shape({
+    first_name: PropTypes.string,
+    last_name: PropTypes.string,
+    phone: PropTypes.string,
+    email: PropTypes.string,
+    campus_address: PropTypes.string,
+    class_year: PropTypes.string,
+    campus_mailbox: PropTypes.string,
+    home_address: PropTypes.string,
+    home_city: PropTypes.string,
+    home_zip: PropTypes.string,
   }),
 };
 MemberInfoEdit.defaultProps = {
@@ -87,4 +87,4 @@ MemberInfoEdit.defaultProps = {
   },
 };
 
-module.exports = MemberInfoEdit;
+export default MemberInfoEdit;

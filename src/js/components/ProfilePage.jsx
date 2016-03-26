@@ -1,14 +1,14 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-const ApprovalQueue = require('./ApprovalQueue');
-const MemberInfoEdit = require('./MemberInfoEdit');
-const MemberCertifications = require('./MemberCertifications');
-const MemberServiceCredits = require('./MemberServiceCredits');
-const UpcomingShifts = require('./UpcomingShifts');
-const ExpiringCerts = require('./ExpiringCerts');
-const MemberHistory = require('./MemberHistory');
-const Icon = require('./Icon');
+import ApprovalQueue from './ApprovalQueue';
+import MemberInfoEdit from './MemberInfoEdit';
+import MemberCertifications from './MemberCertifications';
+import MemberServiceCredits from './MemberServiceCredits';
+import UpcomingShifts from './UpcomingShifts';
+import ExpiringCerts from './ExpiringCerts';
+import MemberHistory from './MemberHistory';
+import Icon from './Icon';
 
 const Profile = (props) => (
   <div className="ui stackable grid">

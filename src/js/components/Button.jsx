@@ -1,5 +1,5 @@
-const React = require('react');
-const Icon = require('icon');
+import React, { PropTypes } from 'react';
+import Icon from './Icon';
 
 const getClassName = (props) => {
   let className = `btn btn-${props.type}`;
@@ -28,11 +28,11 @@ const Button = (props) => (
   </button>
 );
 Button.propTypes = {
-  icon: React.PropTypes.string,
-  text: React.PropTypes.string,
-  size: React.PropTypes.string,
-  type: React.PropTypes.string,
-  isEnabled: React.PropTypes.bool,
+  icon: PropTypes.string,
+  text: PropTypes.string,
+  size: PropTypes.string,
+  type: PropTypes.string,
+  isEnabled: PropTypes.bool,
 };
 Button.defaultProps = {
   icon: '',
@@ -42,4 +42,4 @@ Button.defaultProps = {
   isEnabled: true,
 };
 
-module.exports = Button;
+export default Button;

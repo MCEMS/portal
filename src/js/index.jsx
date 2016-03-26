@@ -1,4 +1,4 @@
-require('../scss/calendar.scss');
+require('../scss/app.scss');
 
 import React from 'react';
 import App from './components/App';
