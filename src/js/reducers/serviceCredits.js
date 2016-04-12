@@ -3,9 +3,11 @@ const serviceCredit = (state, action) => {
     case 'ADD_SERVICE_CREDIT':
       return {
         id: action.id,
+        personId: action.personId,
         description: action.description,
         performedAt: action.performedAt,
-        approver: null,
+        approvedBy: null,
+        approvedOn: null,
       };
     default:
       return state;

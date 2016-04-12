@@ -3,7 +3,7 @@ const certificationType = (state, action) => {
     case 'ADD_CERTIFICATION_TYPE':
       return {
         id: action.id,
-        type: action.certificationType,
+        certificationType: action.certificationType,
       };
     default:
       return state;

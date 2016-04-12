@@ -1,11 +1,27 @@
+import moment from 'moment';
+
 let nextCertificationId = 0;
-export const addCertification = (certification, number, issued, expires) => ({
+export const addCertification = ({ certificationTypeId, personId, number, issued, expires }) => ({
   type: 'ADD_CERTIFICATION',
   id: nextCertificationId++,
-  certification,
+  certificationTypeId,
+  personId,
   number,
-  issued,
-  expires,
+  issued: moment(issued),
+  expires: moment(expires),
+  requestedOn: moment(),
+});
+
+export const approveCertification = (id, approverId) => ({
+  type: 'APPROVE_CERTIFICATION',
+  id,
+  approvedOn: moment(),
+  approvedBy: approverId,
+});
+
+export const rejectCertification = (id) => ({
+  type: 'REJECT_CERTIFICATION',
+  id,
 });
 
 let nextCertificationTypeId = 0;
@@ -28,6 +44,12 @@ export const addPerson = (firstName, lastName) => ({
   lastName,
 });
 
+export const updatePerson = (id, person) => ({
+  type: 'UPDATE_PERSON',
+  id,
+  person,
+});
+
 let nextRoleId = 0;
 export const addRole = (role) => ({
   type: 'ADD_ROLE',
@@ -36,9 +58,15 @@ export const addRole = (role) => ({
 });
 
 let nextServiceCreditId = 0;
-export const addServiceCredit = (description, performedAt) => ({
+export const addServiceCredit = (personId, description, performedAt) => ({
   type: 'ADD_SERVICE_CREDIT',
   id: nextServiceCreditId++,
+  personId,
   description,
   performedAt,
+});
+
+export const setPersonId = (personId) => ({
+  type: 'SET_PERSON_ID',
+  personId,
 });

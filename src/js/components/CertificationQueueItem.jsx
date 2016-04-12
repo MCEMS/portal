@@ -5,32 +5,26 @@ import QueueItem from './QueueItem';
 const CertificationQueueItem = (props) => {
   const summary = `${props.name} added a certification`;
   return (
-    <QueueItem icon="certificate" summary={summary} {...this.props}>
-      <strong>{this.props.type}</strong>
+    <QueueItem icon="certificate" summary={summary} {...props}>
+      <strong>{props.type}</strong>
       {' certification '}
-      <strong>{this.props.number}</strong>
+      <strong>{props.number}</strong>
       {' expiring on '}
-      <strong>{this.props.expires.format('MMMM Do, YYYY')}</strong>.
+      <strong>{props.expires.format('MMMM Do, YYYY')}</strong>.
     </QueueItem>
   );
 };
 CertificationQueueItem.propTypes = {
-  id: PropTypes.number,
-  requestedAt: PropTypes.instanceOf(moment),
-  approve: PropTypes.func,
-  reject: PropTypes.func,
-  name: PropTypes.string,
-  type: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  requestedOn: PropTypes.instanceOf(moment).isRequired,
+  onApprove: PropTypes.func.isRequired,
+  onReject: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   number: PropTypes.string,
   expires: PropTypes.instanceOf(moment),
 };
 CertificationQueueItem.defaultProps = {
-  id: 0,
-  requestedAt: moment(),
-  approve: () => {},
-  reject: () => {},
-  name: '',
-  type: '',
   number: '',
   expires: moment(),
 };

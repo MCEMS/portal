@@ -3,11 +3,23 @@ const certification = (state, action) => {
     case 'ADD_CERTIFICATION':
       return {
         id: action.id,
-        type: action.certification,
+        certificationTypeId: action.certificationTypeId,
+        personId: action.personId,
         number: action.number,
         issued: action.issued,
         expires: action.expires,
+        approvedBy: null,
+        approvedOn: null,
+        requestedOn: action.requestedOn,
       };
+    case 'APPROVE_CERTIFICATION':
+      if (state.id === action.id) {
+        return Object.assign({}, state, {
+          approvedOn: action.approvedOn,
+          approvedBy: action.approvedBy,
+        });
+      }
+      return state;
     default:
       return state;
   }
@@ -20,6 +32,14 @@ const certifications = (state = [], action) => {
         ...state,
         certification(undefined, action),
       ];
+    case 'APPROVE_CERTIFICATION':
+      return state.map(cert => (
+        certification(cert, action)
+      ));
+    case 'REJECT_CERTIFICATION':
+      return state.filter(cert => (
+        cert.id !== action.id
+      ));
     default:
       return state;
   }

@@ -1,11 +1,3 @@
-const initialState = [
-  {
-    id: -1,
-    firstName: 'Ben',
-    lastName: 'Burwell',
-  },
-];
-
 const person = (state, action) => {
   switch (action.type) {
     case 'ADD_PERSON':
@@ -14,18 +6,25 @@ const person = (state, action) => {
         firstName: action.firstName,
         lastName: action.lastName,
       };
+    case 'UPDATE_PERSON':
+      if (state.id === action.id) {
+        return action.person;
+      }
+      return state;
     default:
       return state;
   }
 };
 
-const people = (state = initialState, action) => {
+const people = (state = [], action) => {
   switch (action.type) {
     case 'ADD_PERSON':
       return [
         ...state,
-        person(action),
+        person(undefined, action),
       ];
+    case 'UPDATE_PERSON':
+      return state.map(p => person(p, action));
     default:
       return state;
   }

@@ -1,76 +1,76 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { addCertificationType } from '../actions';
 import SettingsCertRow from './SettingsCertRow';
 import Icon from './Icon';
 
-class SettingsCerts extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: '',
-    };
-  }
+let SettingsCerts = (props) => {
+  let certificationType = '';
 
-  handleTypeChange(event) {
-    this.setState({ type: event.target.value });
-  }
+  const certifications = props.certificationTypes.map((cert, idx) => (
+    <SettingsCertRow {...cert} key={idx} />
+  ));
 
-  create() {
-    this.props.createCertificationType(this.state.type);
-    this.setState({
-      type: '',
-    });
-  }
+  const create = () => {
+    props.createCertificationType(certificationType);
+  };
 
-  render() {
-    const certifications = this.props.certifications.map((cert, idx) => (
-      <SettingsCertRow {...cert} key={idx} />
-    ));
+  const handleCertificationTypeChange = e => {
+    certificationType = e.target.value;
+  };
 
-    return (
-      <table className="ui compact table">
-        <thead>
-          <tr>
-            <th className="twelve wide">
-              <h1 className="header">
-                <Icon icon="certificate" /> Certification Types
-              </h1>
-            </th>
-            <th className="four wide"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {certifications}
-        </tbody>
-        <tfoot>
-          <tr>
-            <th>
-              <div className="ui fluid input">
-                <input
-                  value={this.state.type}
-                  onChange={this.handleTypeChange}
-                  type="text"
-                  placeholder="Type of certification"
-                />
-              </div>
-            </th>
-            <th className="right aligned">
-              <button onClick={this.create} className="ui fluid green button">
-                <Icon icon="add" /> Save
-              </button>
-            </th>
-          </tr>
-        </tfoot>
-      </table>
-    );
-  }
-}
+  return (
+    <table className="ui compact table">
+      <thead>
+        <tr>
+          <th className="twelve wide">
+            <h1 className="header">
+              <Icon icon="certificate" /> Certification Types
+            </h1>
+          </th>
+          <th className="four wide"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {certifications}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>
+            <div className="ui fluid input">
+              <input
+                defaultValue={certificationType}
+                onChange={handleCertificationTypeChange}
+                type="text"
+                placeholder="Type of certification"
+              />
+            </div>
+          </th>
+          <th className="right aligned">
+            <button onClick={create} className="ui fluid green button">
+              <Icon icon="add" /> Save
+            </button>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  );
+};
 SettingsCerts.propTypes = {
-  certifications: PropTypes.array,
-  createCertificationType: PropTypes.func,
+  certificationTypes: PropTypes.array.isRequired,
+  createCertificationType: PropTypes.func.isRequired,
 };
-SettingsCerts.defaultProps = {
-  certifications: [],
-  createCertificationType: () => {},
-};
+
+const mapStateToProps = (state) => ({
+  certificationTypes: state.certificationTypes,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  createCertificationType: (certificationType) => {
+    dispatch(addCertificationType(certificationType));
+  },
+});
+
+SettingsCerts = connect(mapStateToProps, mapDispatchToProps)(SettingsCerts);
 
 export default SettingsCerts;

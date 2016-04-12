@@ -3,7 +3,10 @@ const role = (state, action) => {
     case 'ADD_ROLE':
       return {
         id: action.id,
-        role: action.role,
+        personId: action.personId,
+        roleId: action.roleId,
+        approvedBy: null,
+        approvedOn: null,
       };
     default:
       return state;

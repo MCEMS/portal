@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
 import ApprovalQueue from './ApprovalQueue';
 import MemberInfoEdit from './MemberInfoEdit';
@@ -10,14 +9,14 @@ import ExpiringCerts from './ExpiringCerts';
 import MemberHistory from './MemberHistory';
 import Icon from './Icon';
 
-const Profile = (props) => (
+const ProfilePage = () => (
   <div className="ui stackable grid">
     <div className="twelve wide column">
       <ApprovalQueue />
       <div className="ui hidden divider" />
       <h1 className="ui horizontal divider header">Contact Details</h1>
       <p>Keep us up to date so we can achieve maximum synergy :)</p>
-      <MemberInfoEdit personId={props.personId} />
+      <MemberInfoEdit />
       <div className="ui hidden divider" />
       <h1 className="ui horizontal divider header">Certifications</h1>
       <p>
@@ -29,7 +28,7 @@ const Profile = (props) => (
         certification to appear here, as it will need to be verified by an
         admin.
       </p>
-      <MemberCertifications personId={props.personId} />
+      <MemberCertifications />
       <div className="ui hidden divider" />
       <h1 className="ui horizontal divider header">Service Credits</h1>
       <p>
@@ -37,18 +36,18 @@ const Profile = (props) => (
         started, just enter a brief description of what you did and submit it
         for approval!
       </p>
-      <MemberServiceCredits personId={props.personId} />
+      <MemberServiceCredits />
     </div>
 
     <div className="four wide column">
       <div className="ui horizontal divider">Upcoming Shifts</div>
-      <UpcomingShifts personId={props.personId} />
+      <UpcomingShifts />
       <div className="ui hidden divider"></div>
       <div className="ui horizontal divider">Expiring Certs</div>
-      <ExpiringCerts personId={props.personId} />
+      <ExpiringCerts />
       <div className="ui hidden divider"></div>
       <div className="ui horizontal divider">My Roles</div>
-      <MemberHistory personId={props.personId} />
+      <MemberHistory />
       <div className="ui hidden divider"></div>
       <div className="ui horizontal divider">Duty Hours</div>
       <div>
@@ -83,13 +82,5 @@ const Profile = (props) => (
     </div>
   </div>
 );
-Profile.propTypes = {
-  personId: PropTypes.number.isRequired,
-};
 
-const mapStateToProps = () => ({
-  personId: -1,
-});
-
-const ProfilePage = connect(mapStateToProps)(Profile);
 export default ProfilePage;

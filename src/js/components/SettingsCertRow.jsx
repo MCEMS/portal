@@ -4,7 +4,7 @@ import Icon from './Icon';
 const SettingsCertRow = (props) => (
   <tr>
     <td>
-      <div className="ui large label">{props.type}</div>
+      <div className="ui large label">{props.certificationType}</div>
     </td>
     <td className="right aligned">
       <button className="ui fluid basic button">
@@ -14,7 +14,7 @@ const SettingsCertRow = (props) => (
   </tr>
 );
 SettingsCertRow.propTypes = {
-  type: PropTypes.string,
+  certificationType: PropTypes.string.isRequired,
 };
 
 export default SettingsCertRow;
